@@ -2,7 +2,7 @@
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useRef, useEffect, useState } from "react";
-import { CPCproducts } from "@/app/_data/constants";
+import { CPCproducts, CPCImages } from "@/app/_data/constants";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { Typography } from "@mui/material";
 
@@ -149,6 +149,8 @@ export default function Home() {
         </div>
       </div>
 
+      <div className=""></div>
+
       <div className="flex justify-center items-center">
         <div className="flex flex-col items-center gap-4 mt-8">
           <span
@@ -175,6 +177,67 @@ export default function Home() {
             control over light, privacy, and ambiance in any space
           </p>
         </div>
+      </div>
+
+      <div className="flex gap-6 mt-8 overflow-x-auto">
+        {CPCImages.map((item, index) => (
+          <div
+            key={index}
+            className="relative flex cursor-pointer  flex-col items-center min-w-[200px] group overflow-hidden rounded-[20px]"
+          >
+            <img
+              src={item.image}
+              alt={item.productName}
+              className="w-full h-[600px] object-cover rounded-[20px] shadow-md 
+                   transition-transform duration-500 ease-in-out group-hover:scale-120"
+            />
+
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/40 rounded-[20px]"></div>
+
+            {/* Centered vertical text */}
+            <span
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                   text-white text-[25px] md:text-[20pxx] font-bold underline"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "mixed",
+              }}
+            >
+              {item.productName}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="w-full max-w-[1980px] mx-auto">
+        <div className="flex justify-center items-center">
+          <div className="flex flex-col items-center gap-4 mt-8">
+            <span
+              ref={barRef}
+              className="bg-black h-[12px] rounded-full transition-transform duration-700 ease-out origin-center"
+              style={{
+                width: "clamp(120px, 25vw, 170px)",
+                transform: visible ? "scaleX(1)" : "scaleX(0)",
+              }}
+            ></span>
+
+            <span className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14">
+              Inspiration Gallery
+            </span>
+            <p
+              className={`text-black text-[12px] md:text-base font-medium text-center transition-all duration-1000 delay-200 ${
+                show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              Discover how our window blinds transform spaces with style and
+              <br />
+              elegance in our Inspiration Gallery
+            </p>
+          </div>
+        </div>
+
+        <div>HIIIII</div>
       </div>
     </>
   );

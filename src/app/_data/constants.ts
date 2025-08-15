@@ -11,26 +11,44 @@ export const CPCproducts = [
 export const CPCImages = [
   {
     productName: "Korean COMBI Blinds",
-    image: "/",
+    image: "/blinds1.jpeg",
   },
   {
     productName: "Roller Blinds",
-    image: "/",
+    image: "/blinds1.jpeg",
   },
   {
     productName: "Fabric curtains & sheer",
-    image: "/",
+    image: "/blinds1.jpeg",
   },
   {
     productName: "Venetian Blinds",
-    image: "/",
+    image: "/blinds1.jpeg",
   },
   {
     productName: "Vertical Blind",
-    image: "/",
+    image: "/blinds1.jpeg",
   },
   {
     productName: "Accordion/Folding Doors",
-    image: "/",
+    image: "/blinds1.jpeg",
+  },
+];
+
+export const combiBlinds = [
+  {
+    image: "/blinds1.jpeg",
+  },
+  {
+    image: "/blinds1.jpeg",
+  },
+  {
+    image: "/blinds1.jpeg",
+  },
+  {
+    image: "/blinds1.jpeg",
+  },
+  {
+    image: "/blinds1.jpeg",
   },
 ];
