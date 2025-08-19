@@ -988,7 +988,7 @@ export default function Home() {
                     <div className="flex items-start gap-2 mt-3">
                       <Person fontSize="medium" className="text-gray-600" />
                       <p className="text-sm sm:text-base italic text-gray-700">
-                        "{product.feedback}"
+                        &quot;{product.feedback}&quot;
                       </p>
                     </div>
 
