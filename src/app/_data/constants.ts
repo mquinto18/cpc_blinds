@@ -68,7 +68,7 @@ export const CPCImages = [
 
 export const combiBlinds = [
   {
-    image: "/1.jpg",
+    image: "/combi10.jpg",
   },
   {
     image: "/3.jpg",

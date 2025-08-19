@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CPC Window Blinds",
   description: "CPC Window Blinds",
+  icons: {
+    icon: "/navLogo.jpeg",
+  },
 };
 
 export default function RootLayout({

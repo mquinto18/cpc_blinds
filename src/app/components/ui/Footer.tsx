@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start gap-3 mt-5">
             <a
-              href="https://facebook.com/yourpage"
+              href="https://www.facebook.com/share/1AkX5MJTxm/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -40,7 +40,7 @@ export default function Footer() {
               </div>
             </a>
             <a
-              href="https://instagram.com/yourpage"
+              href="https://www.instagram.com/cpcmnlwindowblinds?igsh=cGFqMWt6eDhydXdo"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -57,7 +57,7 @@ export default function Footer() {
                 <TwitterIcon sx={{ color: "white" }} />
               </div>
             </a>
-            <a href="mailto:your@email.com">
+            <a href="CPCMNLWINDOW@GMAIL.COM">
               <div className="bg-black rounded-full p-2 hover:bg-gray-800 transition">
                 <EmailIcon sx={{ color: "white" }} />
               </div>
@@ -101,8 +101,8 @@ export default function Footer() {
             <h3 className="text-base sm:text-lg font-semibold mb-3">
               Contacts
             </h3>
-            <p className="text-gray-700">09695194016</p>
-            <p className="text-gray-700 break-words">quinto53@gmail.com</p>
+            <p className="text-gray-700">0916.418.0061</p>
+            <p className="text-gray-700 break-words">CPCMNLWINDOW@GMAIL.COM</p>
           </div>
         </div>
       </div>

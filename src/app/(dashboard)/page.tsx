@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from "react";
 import { Person, Star } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import ContactInfo from "../components/ui/contactInfo";
+import { useRouter } from "next/navigation";
 import Footer from "../components/ui/Footer";
 
 import {
@@ -34,6 +35,7 @@ export default function Home() {
   const [show, setShow] = useState(false);
   const barRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -280,8 +282,8 @@ export default function Home() {
                 />
               </div>
 
-              {/* Right stacked images */}
-              <div className="flex flex-col gap-4 w-full md:w-1/4">
+              {/* Right stacked images (hidden on mobile) */}
+              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
                 {combiBlinds.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -351,8 +353,9 @@ export default function Home() {
                   maxWidth: 300,
                   gap: 2,
                   boxSizing: "border-box",
-                  mt: 6, // add spacing from last detail
+                  mt: 6,
                 }}
+                onClick={() => router.push("/details/combi")} // go to modal path
               >
                 <span style={{ marginRight: 8, fontSize: "inherit" }}>
                   View More
@@ -422,6 +425,7 @@ export default function Home() {
                   boxSizing: "border-box",
                   mt: 6,
                 }}
+                onClick={() => router.push("/details/rollers")} // go to modal path
               >
                 <span style={{ marginRight: 8, fontSize: "inherit" }}>
                   View More
@@ -431,8 +435,8 @@ export default function Home() {
 
             {/* Images Section */}
             <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
-              {/* Left stacked images */}
-              <div className="flex flex-col gap-4 w-full md:w-1/4">
+              {/* Left stacked images (hidden on mobile) */}
+              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
                 {rollerBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -468,8 +472,8 @@ export default function Home() {
                 />
               </div>
 
-              {/* Right stacked images */}
-              <div className="flex flex-col gap-4 w-full md:w-1/4">
+              {/* Right stacked images (hidden on mobile) */}
+              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
                 {curtainsBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -509,7 +513,6 @@ export default function Home() {
                       className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
                     >
                       <div className="flex items-center gap-2">
-                        {/* Only render icon if it exists */}
                         {IconComponent && <IconComponent fontSize="medium" />}
                         <h1 className="text-sm sm:text-base md:text-lg font-bold">
                           {item.title}
@@ -539,8 +542,9 @@ export default function Home() {
                   maxWidth: 300,
                   gap: 2,
                   boxSizing: "border-box",
-                  mt: 6, // add spacing from last detail
+                  mt: 6,
                 }}
+                onClick={() => router.push("/details/curtainSheer")} // go to modal path
               >
                 <span style={{ marginRight: 8, fontSize: "inherit" }}>
                   View More
@@ -610,6 +614,7 @@ export default function Home() {
                   boxSizing: "border-box",
                   mt: 6,
                 }}
+                onClick={() => router.push("/details/venetian")} // go to modal path
               >
                 <span style={{ marginRight: 8, fontSize: "inherit" }}>
                   View More
@@ -620,7 +625,7 @@ export default function Home() {
             {/* Images Section */}
             <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
               {/* Left stacked images */}
-              <div className="flex flex-col gap-4 w-full md:w-1/4">
+              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
                 {venetianBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -657,7 +662,7 @@ export default function Home() {
               </div>
 
               {/* Right stacked images */}
-              <div className="flex flex-col gap-4 w-full md:w-1/4">
+              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
                 {verticalBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -729,6 +734,7 @@ export default function Home() {
                   boxSizing: "border-box",
                   mt: 6, // add spacing from last detail
                 }}
+                onClick={() => router.push("/details/vertical")} // go to modal path
               >
                 <span style={{ marginRight: 8, fontSize: "inherit" }}>
                   View More
@@ -798,6 +804,7 @@ export default function Home() {
                   boxSizing: "border-box",
                   mt: 6,
                 }}
+                onClick={() => router.push("/details/wooden")} // go to modal path
               >
                 <span style={{ marginRight: 8, fontSize: "inherit" }}>
                   View More
@@ -808,7 +815,7 @@ export default function Home() {
             {/* Images Section */}
             <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
               {/* Left stacked images */}
-              <div className="flex flex-col gap-4 w-full md:w-1/4">
+              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
                 {woodenBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -845,7 +852,7 @@ export default function Home() {
               </div>
 
               {/* Right stacked images */}
-              <div className="flex flex-col gap-4 w-full md:w-1/4">
+              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
                 {accordionBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -917,6 +924,7 @@ export default function Home() {
                   boxSizing: "border-box",
                   mt: 6, // add spacing from last detail
                 }}
+                onClick={() => router.push("/details/accordion")} // go to modal path
               >
                 <span style={{ marginRight: 8, fontSize: "inherit" }}>
                   View More
