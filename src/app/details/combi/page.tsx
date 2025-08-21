@@ -14,7 +14,9 @@ import { useState } from "react";
 
 export default function CombiDetailsModal() {
   const [open, setOpen] = useState(true);
-  const [blindType, setBlindType] = useState("semi-blackout");
+  const [blindType, setBlindType] = useState("premium-blackout");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(""); // 👈 track color
   const router = useRouter();
 
   const handleClose = () => {
@@ -22,23 +24,325 @@ export default function CombiDetailsModal() {
     router.back();
   };
 
-  const blindImages: Record<string, string> = {
-    "semi-blackout": "/combi10.jpg",
-    "natural-basic": "/1.jpg",
-    "premium-blackout": "/3.jpg",
+  // Blind type -> images -> each image has a name + its own colors
+  const blindsData: Record<
+    string,
+    { image: string; name: string; colors: string[] }[]
+  > = {
+    "semi-blackout": [
+      {
+        image: "/combi10.jpg",
+        name: "Semi-Blackout - Woodlook Prime",
+        colors: [
+          "red",
+          "blue",
+          "green",
+          "orange",
+          "purple",
+          "teal",
+          "pink",
+          "yellow",
+          "gray",
+        ],
+      },
+      {
+        image: "/combi10.jpg",
+        name: "Semi-Blackout - Woodlook Eluxe",
+        colors: [
+          "red",
+          "blue",
+          "green",
+          "orange",
+          "purple",
+          "teal",
+          "pink",
+          "yellow",
+          "gray",
+        ],
+      },
+      {
+        image: "/combi10.jpg",
+        name: "Semi-Blackout - Natural Linen",
+        colors: [
+          "red",
+          "blue",
+          "green",
+          "orange",
+          "purple",
+          "teal",
+          "pink",
+          "yellow",
+          "gray",
+        ],
+      },
+      {
+        image: "/combi11.jpg",
+        name: "Semi-Blackout - Silk",
+        colors: [
+          "brown",
+          "beige",
+          "khaki",
+          "olive",
+          "tan",
+          "linen",
+          "wheat",
+          "ivory",
+          "goldenrod",
+        ],
+      },
+      {
+        image: "/combi12.jpg",
+        name: "Semi-Blackout - Vega",
+        colors: [
+          "black",
+          "darkgray",
+          "slategray",
+          "midnightblue",
+          "maroon",
+          "dimgray",
+          "navy",
+          "darkslateblue",
+          "silver",
+        ],
+      },
+      {
+        image: "/combi12.jpg",
+        name: "Semi-Blackout - Trilogy",
+        colors: [
+          "black",
+          "darkgray",
+          "slategray",
+          "midnightblue",
+          "maroon",
+          "dimgray",
+          "navy",
+          "darkslateblue",
+          "silver",
+        ],
+      },
+      {
+        image: "/combi12.jpg",
+        name: "Semi-Blackout - Timber",
+        colors: [
+          "black",
+          "darkgray",
+          "slategray",
+          "midnightblue",
+          "maroon",
+          "dimgray",
+          "navy",
+          "darkslateblue",
+          "silver",
+        ],
+      },
+      {
+        image: "/combi12.jpg",
+        name: "Semi-Blackout - Losa Wood",
+        colors: [
+          "black",
+          "darkgray",
+          "slategray",
+          "midnightblue",
+          "maroon",
+          "dimgray",
+          "navy",
+          "darkslateblue",
+          "silver",
+        ],
+      },
+      {
+        image: "/combi12.jpg",
+        name: "Semi-Blackout - Kingswood",
+        colors: [
+          "black",
+          "darkgray",
+          "slategray",
+          "midnightblue",
+          "maroon",
+          "dimgray",
+          "navy",
+          "darkslateblue",
+          "silver",
+        ],
+      },
+      {
+        image: "/combi12.jpg",
+        name: "Semi-Blackout - Crescendo",
+        colors: [
+          "black",
+          "darkgray",
+          "slategray",
+          "midnightblue",
+          "maroon",
+          "dimgray",
+          "navy",
+          "darkslateblue",
+          "silver",
+        ],
+      },
+    ],
+    "natural-basic": [
+      {
+        image: "/1.jpg",
+        name: "Natural Series",
+        colors: [
+          "lightblue",
+          "skyblue",
+          "aqua",
+          "turquoise",
+          "lightseagreen",
+          "powderblue",
+          "steelblue",
+          "dodgerblue",
+          "cadetblue",
+        ],
+      },
+      {
+        image: "/2.jpg",
+        name: "Natural - Basic Color",
+        colors: [
+          "tan",
+          "peru",
+          "chocolate",
+          "sienna",
+          "saddlebrown",
+          "rosybrown",
+          "burlywood",
+          "bisque",
+          "moccasin",
+        ],
+      },
+    ],
+    "premium-blackout": [
+      {
+        image: "/3.jpg",
+        name: "Premium Blackout - Luxury",
+        colors: [
+          "black",
+          "dimgray",
+          "gray",
+          "darkslategray",
+          "slategray",
+          "lightslategray",
+          "silver",
+          "gainsboro",
+          "whitesmoke",
+        ],
+      },
+      {
+        image: "/4.jpg",
+        name: "Premium Blackout - Hannover",
+        colors: [
+          "navy",
+          "blue",
+          "mediumblue",
+          "royalblue",
+          "cornflowerblue",
+          "deepskyblue",
+          "dodgerblue",
+          "skyblue",
+          "steelblue",
+        ],
+      },
+      {
+        image: "/5.jpg",
+        name: "Premium Blackout - Picasso",
+        colors: [
+          "crimson",
+          "firebrick",
+          "darkred",
+          "indianred",
+          "lightcoral",
+          "salmon",
+          "darksalmon",
+          "tomato",
+          "orangered",
+        ],
+      },
+      {
+        image: "/5.jpg",
+        name: "Premium Blackout - Majesty",
+        colors: [
+          "crimson",
+          "firebrick",
+          "darkred",
+          "indianred",
+          "lightcoral",
+          "salmon",
+          "darksalmon",
+          "tomato",
+          "orangered",
+        ],
+      },
+      {
+        image: "/5.jpg",
+        name: "Premium Blackout - Prima-S",
+        colors: [
+          "crimson",
+          "firebrick",
+          "darkred",
+          "indianred",
+          "lightcoral",
+          "salmon",
+          "darksalmon",
+          "tomato",
+          "orangered",
+        ],
+      },
+      {
+        image: "/5.jpg",
+        name: "Premium Blackout - Ultima",
+        colors: [
+          "crimson",
+          "firebrick",
+          "darkred",
+          "indianred",
+          "lightcoral",
+          "salmon",
+          "darksalmon",
+          "tomato",
+          "orangered",
+        ],
+      },
+      {
+        image: "/5.jpg",
+        name: "Premium Blackout - Adeline",
+        colors: [
+          "crimson",
+          "firebrick",
+          "darkred",
+          "indianred",
+          "lightcoral",
+          "salmon",
+          "darksalmon",
+          "tomato",
+          "orangered",
+        ],
+      },
+    ],
   };
 
-  const boxColors = [
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple",
-    "teal",
-    "pink",
-    "yellow",
-    "gray",
-  ];
+  const handleNext = () => {
+    const total = blindsData[blindType].length;
+    const newIndex = (currentImageIndex + 1) % total;
+    setCurrentImageIndex(newIndex);
+    setSelectedColor(""); // reset on new image
+  };
+
+  const handlePrev = () => {
+    const total = blindsData[blindType].length;
+    const newIndex = (currentImageIndex - 1 + total) % total;
+    setCurrentImageIndex(newIndex);
+    setSelectedColor(""); // reset on new image
+  };
+
+  const handleBlindChange = (value: string) => {
+    setBlindType(value);
+    setCurrentImageIndex(0);
+    setSelectedColor("");
+  };
+
+  const currentData = blindsData[blindType][currentImageIndex];
 
   return (
     <Modal open={open} onClose={handleClose}>
@@ -74,7 +378,7 @@ export default function CombiDetailsModal() {
             labelId="blind-type-label"
             value={blindType}
             label="Choose Blind Type"
-            onChange={(e) => setBlindType(e.target.value)}
+            onChange={(e) => handleBlindChange(e.target.value)}
           >
             <MenuItem value="premium-blackout">
               Premium Blackout Blinds (Our best seller)
@@ -95,19 +399,69 @@ export default function CombiDetailsModal() {
             justifyContent: "center",
           }}
         >
-          {/* Image */}
+          {/* Image with slider */}
           <Box
-            component="img"
-            src={blindImages[blindType]}
-            alt="Combi Blinds Sample"
             sx={{
-              width: { xs: "100%", md: "auto" },
-              maxWidth: 900,
-              height: 500,
-              objectFit: "cover",
-              borderRadius: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
-          />
+          >
+            {/* 👇 Name above the image */}
+            <Typography
+              variant="subtitle1"
+              sx={{
+                mb: 2,
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                textAlign: "center",
+              }}
+            >
+              {currentData.name}
+            </Typography>
+
+            <Box
+              sx={{
+                position: "relative",
+                width: { xs: "100%", md: "auto" },
+                maxWidth: 900,
+                height: 500,
+                borderRadius: 2,
+                overflow: "hidden",
+                backgroundColor: selectedColor || "transparent", // 👈 apply selected color
+              }}
+            >
+              <Box
+                component="img"
+                src={currentData.image}
+                alt={currentData.name}
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  opacity: selectedColor ? 0.85 : 1, // 👈 tint effect
+                  transition: "opacity 0.3s",
+                }}
+              />
+            </Box>
+
+            {/* Selected color label */}
+            {selectedColor && (
+              <Typography sx={{ mt: 1, fontStyle: "italic" }}>
+                Selected color: {selectedColor}
+              </Typography>
+            )}
+
+            {/* Navigation */}
+            <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
+              <Button variant="outlined" onClick={handlePrev}>
+                Previous
+              </Button>
+              <Button variant="outlined" onClick={handleNext}>
+                Next
+              </Button>
+            </Box>
+          </Box>
 
           {/* Right side 3x3 boxes */}
           <Box
@@ -119,14 +473,20 @@ export default function CombiDetailsModal() {
               width: { xs: "100%", md: 500 },
             }}
           >
-            {boxColors.map((color, index) => (
+            {currentData.colors.map((color, index) => (
               <Box
                 key={index}
+                onClick={() => setSelectedColor(color)}
                 sx={{
                   width: "100%",
-                  aspectRatio: "1 / 1", // always square
+                  aspectRatio: "1 / 1",
                   bgcolor: color,
                   borderRadius: 1,
+                  border:
+                    selectedColor === color
+                      ? "3px solid black"
+                      : "1px solid #ccc",
+                  cursor: "pointer",
                 }}
               />
             ))}
