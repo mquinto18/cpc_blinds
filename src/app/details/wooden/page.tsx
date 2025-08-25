@@ -14,7 +14,9 @@ import { useState } from "react";
 
 export default function CombiDetailsModal() {
   const [open, setOpen] = useState(true);
-  const [blindType, setBlindType] = useState("Basswood-Realwood");
+  const [blindType, setBlindType] = useState("Wooden-Blinds");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [variantIndex, setVariantIndex] = useState(0); // 👈 track variant slideshow
   const router = useRouter();
 
   const handleClose = () => {
@@ -22,24 +24,66 @@ export default function CombiDetailsModal() {
     router.back();
   };
 
-  const blindImages: Record<string, string> = {
-    "Basswood-Realwood": "/wooden1.jpg",
-    "Paulownia-Realwood": "/wooden2.jpg",
-    "Fauxwood-PVC": "/wooden3.jpg",
-    "Polystrene-PS": "/wooden4.jpg",
+  // Blind type -> images -> each image has a name + its own colors
+  const blindsData: Record<
+    string,
+    { image: string; name: string; images: string[] }[]
+  > = {
+    "Wooden-Blinds": [
+      {
+        image: "/wooden/basswood/BasswoodIMG.jpg",
+        name: "Wooden Blinds - Basswood Realwood",
+        images: ["/wooden/basswood/basscode.jpg"],
+      },
+      {
+        image: "/wooden/fauxwood/fauxwood.jpg",
+        name: "Wooden Blinds - Fauxwood PVC",
+        images: ["/wooden/fauxwood/faux.jpg"],
+      },
+      {
+        image: "/wooden/paulonian/paulowina.jpeg",
+        name: "Wooden Blinds - Paulownia Realwood",
+        images: ["/wooden/paulonian/paulownia.jpg"],
+      },
+      {
+        image: "/wooden/polysterene/polystyrene.jpg",
+        name: "Wooden Blinds - polystyrene",
+        images: ["/wooden/polysterene/poly code.jpg"],
+      },
+    ],
   };
 
-  const boxColors = [
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple",
-    "teal",
-    "pink",
-    "yellow",
-    "gray",
-  ];
+  const handleNext = () => {
+    const total = blindsData[blindType].length;
+    setCurrentImageIndex((prev) => (prev + 1) % total);
+    setVariantIndex(0); // reset variant when switching type
+  };
+
+  const handlePrev = () => {
+    const total = blindsData[blindType].length;
+    setCurrentImageIndex((prev) => (prev - 1 + total) % total);
+    setVariantIndex(0);
+  };
+
+  const handleBlindChange = (value: string) => {
+    setBlindType(value);
+    setCurrentImageIndex(0);
+    setVariantIndex(0);
+  };
+
+  const handleNextVariant = () => {
+    const total = currentData.images.length;
+    setVariantIndex((prev) => (prev + 1) % total);
+  };
+
+  const handlePrevVariant = () => {
+    const total = currentData.images.length;
+    setVariantIndex((prev) => (prev - 1 + total) % total);
+  };
+
+  const currentData = blindsData[blindType][currentImageIndex];
+  const mainImage = currentData.image;
+  const variantImage = currentData.images[variantIndex];
 
   return (
     <Modal open={open} onClose={handleClose}>
@@ -68,7 +112,6 @@ export default function CombiDetailsModal() {
           </div>
         </Typography>
 
-        {/* Dropdown */}
         <FormControl fullWidth className="mt-6">
           <InputLabel id="blind-type-label">Choose Blind Type</InputLabel>
           <Select
@@ -77,10 +120,7 @@ export default function CombiDetailsModal() {
             label="Choose Blind Type"
             onChange={(e) => setBlindType(e.target.value)}
           >
-            <MenuItem value="Basswood-Realwood">Basswood Realwood</MenuItem>
-            <MenuItem value="Paulownia-Realwood">Paulownia Realwood</MenuItem>
-            <MenuItem value="Fauxwood-PVC">Fauxwood PVC</MenuItem>
-            <MenuItem value="Polystrene-PS">Polystrene PS</MenuItem>
+            <MenuItem value="Wooden-Blinds">Wooden Blinds</MenuItem>
           </Select>
         </FormControl>
 
@@ -95,41 +135,98 @@ export default function CombiDetailsModal() {
             justifyContent: "center",
           }}
         >
-          {/* Image */}
-          <Box
-            component="img"
-            src={blindImages[blindType]}
-            alt="Combi Blinds Sample"
-            sx={{
-              width: { xs: "100%", md: "auto" },
-              maxWidth: 900,
-              height: 500,
-              objectFit: "cover",
-              borderRadius: 2,
-            }}
-          />
-
-          {/* Right side 3x3 boxes */}
+          {/* Main Image (Left) */}
           <Box
             sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gridTemplateRows: "repeat(3, 1fr)",
-              gap: 4,
-              width: { xs: "100%", md: 500 },
+              flex: 1, // take half width
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            {boxColors.map((color, index) => (
+            <Typography
+              variant="subtitle1"
+              sx={{
+                mb: 2,
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                textAlign: "center",
+              }}
+            >
+              {currentData.name}
+            </Typography>
+            <Box
+              component="img"
+              src={mainImage}
+              alt={currentData.name}
+              sx={{
+                width: "100%",
+                height: { xs: 300, md: 500 }, // responsive height
+                borderRadius: 2,
+                objectFit: "cover", // keep cover for main image
+              }}
+            />
+            <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
+              <Button variant="outlined" onClick={handlePrev}>
+                Previous
+              </Button>
+              <Button variant="outlined" onClick={handleNext}>
+                Next
+              </Button>
+            </Box>
+          </Box>
+
+          {/* Variant Image (Right, one at a time) */}
+          <Box
+            sx={{
+              flex: 1, // take half width
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              sx={{
+                mb: 2,
+                fontWeight: "bold",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+            >
+              Variant Sample
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                height: { xs: 300, md: 500 }, // container height
+                borderRadius: 2,
+                backgroundColor: "#f5f5f5", // optional: neutral bg behind image
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <Box
-                key={index}
+                component="img"
+                src={variantImage}
+                alt={`variant-${variantIndex}`}
                 sx={{
-                  width: "100%",
-                  aspectRatio: "1 / 1", // always square
-                  bgcolor: color,
-                  borderRadius: 1,
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain", // ✅ ensures full image is visible
+                  borderRadius: 2,
                 }}
               />
-            ))}
+            </Box>
+            <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
+              <Button variant="outlined" onClick={handlePrevVariant}>
+                Prev Sample
+              </Button>
+              <Button variant="outlined" onClick={handleNextVariant}>
+                Next Sample
+              </Button>
+            </Box>
           </Box>
         </Box>
 

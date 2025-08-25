@@ -26,13 +26,13 @@ export const recentProducts = [
 ];
 
 export const CPCproducts = [
-  "Roller Blinds (Sunscreen)",
+  "Roller Blinds Sunscreen",
   "Vertical Blinds",
   "Fabric Curtains",
   "Accordion/Folding Doors",
-  "COMBI Blinds",
+  "Korean COMBI Blinds",
   "Wooden Blinds",
-  "Accordion Doors",
+  "Venetian Blinds",
 ];
 
 export const CPCImages = [
@@ -41,7 +41,7 @@ export const CPCImages = [
     image: "/6.jpg",
   },
   {
-    productName: "Roller Blinds",
+    productName: "Roller Blinds Sunscreen",
     image: "/roller2.jpeg",
   },
   {

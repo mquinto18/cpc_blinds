@@ -16,7 +16,7 @@ export default function CombiDetailsModal() {
   const [open, setOpen] = useState(true);
   const [blindType, setBlindType] = useState("premium-blackout");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedColor, setSelectedColor] = useState(""); // 👈 track color
+  const [variantIndex, setVariantIndex] = useState(0); // 👈 track variant slideshow
   const router = useRouter();
 
   const handleClose = () => {
@@ -24,325 +24,152 @@ export default function CombiDetailsModal() {
     router.back();
   };
 
-  // Blind type -> images -> each image has a name + its own colors
+  // Blind type -> each has default image + list of variant images
   const blindsData: Record<
     string,
-    { image: string; name: string; colors: string[] }[]
+    { image: string; name: string; images: string[] }[]
   > = {
     "semi-blackout": [
       {
-        image: "/combi10.jpg",
-        name: "Semi-Blackout - Woodlook Prime",
-        colors: [
-          "red",
-          "blue",
-          "green",
-          "orange",
-          "purple",
-          "teal",
-          "pink",
-          "yellow",
-          "gray",
+        image: "/koreanCombi/semiblackout/PRIMEWOOD/PRIMEWOOD.jpg",
+        name: "Semi Blackout - Woodlook Prime",
+        images: ["/koreanCombi/semiblackout/PRIMEWOOD/COLOR.jpg"],
+      },
+      {
+        image: "/koreanCombi/semiblackout/ELUXE/ELUXE.jpg",
+        name: "Semi Blackout - Woodlook Eluxe",
+        images: ["/koreanCombi/semiblackout/ELUXE/COLOR.jpg"],
+      },
+      {
+        image: "/koreanCombi/semiblackout/LINEN/LINEN.jpg",
+        name: "Semi Blackout - Natural Linen",
+        images: ["/koreanCombi/semiblackout/LINEN/COLOR.jpg"],
+      },
+      {
+        image: "/koreanCombi/semiblackout/SILK/SILK.jpg",
+        name: "Semi Blackout - Silk",
+        images: ["/koreanCombi/semiblackout/SILK/COLOR.jpg"],
+      },
+      {
+        image: "/koreanCombi/semiblackout/VEGA/VEGA.jpg",
+        name: "Semi Blackout - Vega",
+        images: ["/koreanCombi/semiblackout/VEGA/COLOR.jpg"],
+      },
+      {
+        image: "/koreanCombi/semiblackout/TRILOGY/TRILOGY.jpg",
+        name: "Semi Blackout - Trilogy",
+        images: ["/koreanCombi/semiblackout/TRILOGY/COLOR.jpg"],
+      },
+      {
+        image: "/koreanCombi/semiblackout/TIMBER/TIMBER1.jpg",
+        name: "Semi Blackout - Timber",
+        images: ["/koreanCombi/semiblackout/TIMBER/COLOR.jpg"],
+      },
+      {
+        image: "/koreanCombi/semiblackout/LOSA/LOSA.jpg",
+        name: "Semi Blackout - Losa Wood",
+        images: [
+          "/koreanCombi/semiblackout/LOSA/COLOR.jpg",
+          "/koreanCombi/semiblackout/LOSA/COLOR2.jpg",
+          "/koreanCombi/semiblackout/LOSA/COLOR3.jpg",
         ],
       },
       {
-        image: "/combi10.jpg",
-        name: "Semi-Blackout - Woodlook Eluxe",
-        colors: [
-          "red",
-          "blue",
-          "green",
-          "orange",
-          "purple",
-          "teal",
-          "pink",
-          "yellow",
-          "gray",
-        ],
+        image: "/koreanCombi/semiblackout/KINGSWOOD/KINGSWOOD.jpg",
+        name: "Semi Blackout - Kingswood",
+        images: ["/koreanCombi/semiblackout/KINGSWOOD/COLOR.jpg"],
       },
       {
-        image: "/combi10.jpg",
-        name: "Semi-Blackout - Natural Linen",
-        colors: [
-          "red",
-          "blue",
-          "green",
-          "orange",
-          "purple",
-          "teal",
-          "pink",
-          "yellow",
-          "gray",
-        ],
-      },
-      {
-        image: "/combi11.jpg",
-        name: "Semi-Blackout - Silk",
-        colors: [
-          "brown",
-          "beige",
-          "khaki",
-          "olive",
-          "tan",
-          "linen",
-          "wheat",
-          "ivory",
-          "goldenrod",
-        ],
-      },
-      {
-        image: "/combi12.jpg",
-        name: "Semi-Blackout - Vega",
-        colors: [
-          "black",
-          "darkgray",
-          "slategray",
-          "midnightblue",
-          "maroon",
-          "dimgray",
-          "navy",
-          "darkslateblue",
-          "silver",
-        ],
-      },
-      {
-        image: "/combi12.jpg",
-        name: "Semi-Blackout - Trilogy",
-        colors: [
-          "black",
-          "darkgray",
-          "slategray",
-          "midnightblue",
-          "maroon",
-          "dimgray",
-          "navy",
-          "darkslateblue",
-          "silver",
-        ],
-      },
-      {
-        image: "/combi12.jpg",
-        name: "Semi-Blackout - Timber",
-        colors: [
-          "black",
-          "darkgray",
-          "slategray",
-          "midnightblue",
-          "maroon",
-          "dimgray",
-          "navy",
-          "darkslateblue",
-          "silver",
-        ],
-      },
-      {
-        image: "/combi12.jpg",
-        name: "Semi-Blackout - Losa Wood",
-        colors: [
-          "black",
-          "darkgray",
-          "slategray",
-          "midnightblue",
-          "maroon",
-          "dimgray",
-          "navy",
-          "darkslateblue",
-          "silver",
-        ],
-      },
-      {
-        image: "/combi12.jpg",
-        name: "Semi-Blackout - Kingswood",
-        colors: [
-          "black",
-          "darkgray",
-          "slategray",
-          "midnightblue",
-          "maroon",
-          "dimgray",
-          "navy",
-          "darkslateblue",
-          "silver",
-        ],
-      },
-      {
-        image: "/combi12.jpg",
-        name: "Semi-Blackout - Crescendo",
-        colors: [
-          "black",
-          "darkgray",
-          "slategray",
-          "midnightblue",
-          "maroon",
-          "dimgray",
-          "navy",
-          "darkslateblue",
-          "silver",
-        ],
+        image: "/koreanCombi/semiblackout/CRESENDO/CRESENDO.jpg",
+        name: "Semi Blackout - Cresendo",
+        images: ["/koreanCombi/semiblackout/CRESENDO/COLOR.jpg"],
       },
     ],
     "natural-basic": [
       {
-        image: "/1.jpg",
-        name: "Natural Series",
-        colors: [
-          "lightblue",
-          "skyblue",
-          "aqua",
-          "turquoise",
-          "lightseagreen",
-          "powderblue",
-          "steelblue",
-          "dodgerblue",
-          "cadetblue",
-        ],
+        image: "/koreanCombi/natural/NATURAL/NATURAL.jpg",
+        name: "Natural Basic - Natural",
+        images: ["/koreanCombi/natural/NATURAL/COLOR.jpg"],
       },
       {
-        image: "/2.jpg",
-        name: "Natural - Basic Color",
-        colors: [
-          "tan",
-          "peru",
-          "chocolate",
-          "sienna",
-          "saddlebrown",
-          "rosybrown",
-          "burlywood",
-          "bisque",
-          "moccasin",
+        image: "/koreanCombi/natural/NATURAL/NATURAL.jpg",
+        name: "Natural Basic - Series",
+        images: [
+          "/koreanCombi/natural/NATURALSERIES/SERIESCOLOR.jpg",
+          "/koreanCombi/natural/NATURALSERIES/SERIES.jpg",
         ],
       },
     ],
     "premium-blackout": [
       {
-        image: "/3.jpg",
+        image: "/koreanCombi/blackout/LUXURY/LUXURY.jpg",
         name: "Premium Blackout - Luxury",
-        colors: [
-          "black",
-          "dimgray",
-          "gray",
-          "darkslategray",
-          "slategray",
-          "lightslategray",
-          "silver",
-          "gainsboro",
-          "whitesmoke",
-        ],
+        images: ["/koreanCombi/blackout/LUXURY/COLOR.jpg"],
       },
       {
-        image: "/4.jpg",
+        image: "/koreanCombi/blackout/HANNOVER/HANNOVER.jpg",
         name: "Premium Blackout - Hannover",
-        colors: [
-          "navy",
-          "blue",
-          "mediumblue",
-          "royalblue",
-          "cornflowerblue",
-          "deepskyblue",
-          "dodgerblue",
-          "skyblue",
-          "steelblue",
-        ],
+        images: ["/koreanCombi/blackout/HANNOVER/COLOR.jpg"],
       },
       {
-        image: "/5.jpg",
+        image: "/koreanCombi/blackout/PICASSO/PICASSO.jpg",
         name: "Premium Blackout - Picasso",
-        colors: [
-          "crimson",
-          "firebrick",
-          "darkred",
-          "indianred",
-          "lightcoral",
-          "salmon",
-          "darksalmon",
-          "tomato",
-          "orangered",
-        ],
+        images: ["/koreanCombi/blackout/PICASSO/PICCOLOR.jpg"],
       },
       {
-        image: "/5.jpg",
+        image: "/koreanCombi/blackout/MAJESTY/MAJESTY.jpg",
         name: "Premium Blackout - Majesty",
-        colors: [
-          "crimson",
-          "firebrick",
-          "darkred",
-          "indianred",
-          "lightcoral",
-          "salmon",
-          "darksalmon",
-          "tomato",
-          "orangered",
-        ],
+        images: ["/koreanCombi/blackout/MAJESTY/COLOR.jpg"],
       },
       {
-        image: "/5.jpg",
+        image: "/koreanCombi/blackout/PRIMA-S/PRIMAS.jpg",
         name: "Premium Blackout - Prima-S",
-        colors: [
-          "crimson",
-          "firebrick",
-          "darkred",
-          "indianred",
-          "lightcoral",
-          "salmon",
-          "darksalmon",
-          "tomato",
-          "orangered",
-        ],
+        images: ["/koreanCombi/blackout/PRIMA-S/COLOR.jpg"],
       },
       {
-        image: "/5.jpg",
+        image: "/koreanCombi/blackout/ULTIMA/ULTIMA.jpg",
         name: "Premium Blackout - Ultima",
-        colors: [
-          "crimson",
-          "firebrick",
-          "darkred",
-          "indianred",
-          "lightcoral",
-          "salmon",
-          "darksalmon",
-          "tomato",
-          "orangered",
-        ],
+        images: ["/koreanCombi/blackout/ULTIMA/COLOR.jpg"],
       },
       {
-        image: "/5.jpg",
+        image: "/koreanCombi/blackout/ADELINE/ADELINE.jpg",
         name: "Premium Blackout - Adeline",
-        colors: [
-          "crimson",
-          "firebrick",
-          "darkred",
-          "indianred",
-          "lightcoral",
-          "salmon",
-          "darksalmon",
-          "tomato",
-          "orangered",
-        ],
+        images: ["/koreanCombi/blackout/ADELINE/COLOR.jpg"],
       },
     ],
   };
 
   const handleNext = () => {
     const total = blindsData[blindType].length;
-    const newIndex = (currentImageIndex + 1) % total;
-    setCurrentImageIndex(newIndex);
-    setSelectedColor(""); // reset on new image
+    setCurrentImageIndex((prev) => (prev + 1) % total);
+    setVariantIndex(0); // reset variant when switching type
   };
 
   const handlePrev = () => {
     const total = blindsData[blindType].length;
-    const newIndex = (currentImageIndex - 1 + total) % total;
-    setCurrentImageIndex(newIndex);
-    setSelectedColor(""); // reset on new image
+    setCurrentImageIndex((prev) => (prev - 1 + total) % total);
+    setVariantIndex(0);
   };
 
   const handleBlindChange = (value: string) => {
     setBlindType(value);
     setCurrentImageIndex(0);
-    setSelectedColor("");
+    setVariantIndex(0);
+  };
+
+  const handleNextVariant = () => {
+    const total = currentData.images.length;
+    setVariantIndex((prev) => (prev + 1) % total);
+  };
+
+  const handlePrevVariant = () => {
+    const total = currentData.images.length;
+    setVariantIndex((prev) => (prev - 1 + total) % total);
   };
 
   const currentData = blindsData[blindType][currentImageIndex];
+  const mainImage = currentData.image;
+  const variantImage = currentData.images[variantIndex];
 
   return (
     <Modal open={open} onClose={handleClose}>
@@ -388,7 +215,7 @@ export default function CombiDetailsModal() {
           </Select>
         </FormControl>
 
-        {/* Image + 9 boxes */}
+        {/* Main Content: left main image + right variant image */}
         <Box
           sx={{
             mt: 4,
@@ -399,15 +226,15 @@ export default function CombiDetailsModal() {
             justifyContent: "center",
           }}
         >
-          {/* Image with slider */}
+          {/* Main Image (Left) */}
           <Box
             sx={{
+              flex: 1, // take half width
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            {/* 👇 Name above the image */}
             <Typography
               variant="subtitle1"
               sx={{
@@ -419,40 +246,17 @@ export default function CombiDetailsModal() {
             >
               {currentData.name}
             </Typography>
-
             <Box
+              component="img"
+              src={mainImage}
+              alt={currentData.name}
               sx={{
-                position: "relative",
-                width: { xs: "100%", md: "auto" },
-                maxWidth: 900,
-                height: 500,
+                width: "100%",
+                height: { xs: 300, md: 500 }, // responsive height
                 borderRadius: 2,
-                overflow: "hidden",
-                backgroundColor: selectedColor || "transparent", // 👈 apply selected color
+                objectFit: "cover", // keep cover for main image
               }}
-            >
-              <Box
-                component="img"
-                src={currentData.image}
-                alt={currentData.name}
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  opacity: selectedColor ? 0.85 : 1, // 👈 tint effect
-                  transition: "opacity 0.3s",
-                }}
-              />
-            </Box>
-
-            {/* Selected color label */}
-            {selectedColor && (
-              <Typography sx={{ mt: 1, fontStyle: "italic" }}>
-                Selected color: {selectedColor}
-              </Typography>
-            )}
-
-            {/* Navigation */}
+            />
             <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
               <Button variant="outlined" onClick={handlePrev}>
                 Previous
@@ -463,33 +267,57 @@ export default function CombiDetailsModal() {
             </Box>
           </Box>
 
-          {/* Right side 3x3 boxes */}
+          {/* Variant Image (Right, one at a time) */}
           <Box
             sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gridTemplateRows: "repeat(3, 1fr)",
-              gap: 4,
-              width: { xs: "100%", md: 500 },
+              flex: 1, // take half width
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            {currentData.colors.map((color, index) => (
+            <Typography
+              variant="subtitle1"
+              sx={{
+                mb: 2,
+                fontWeight: "bold",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+            >
+              Variant Sample
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                height: { xs: 300, md: 500 }, // container height
+                borderRadius: 2,
+                backgroundColor: "#f5f5f5", // optional: neutral bg behind image
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <Box
-                key={index}
-                onClick={() => setSelectedColor(color)}
+                component="img"
+                src={variantImage}
+                alt={`variant-${variantIndex}`}
                 sx={{
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                  bgcolor: color,
-                  borderRadius: 1,
-                  border:
-                    selectedColor === color
-                      ? "3px solid black"
-                      : "1px solid #ccc",
-                  cursor: "pointer",
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain", // ✅ ensures full image is visible
+                  borderRadius: 2,
                 }}
               />
-            ))}
+            </Box>
+            <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
+              <Button variant="outlined" onClick={handlePrevVariant}>
+                Prev Sample
+              </Button>
+              <Button variant="outlined" onClick={handleNextVariant}>
+                Next Sample
+              </Button>
+            </Box>
           </Box>
         </Box>
 

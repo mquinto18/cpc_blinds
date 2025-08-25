@@ -35,7 +35,21 @@ export default function Home() {
   const [show, setShow] = useState(false);
   const barRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [showHead, setShowHead] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowHead(false); // fade out
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % headerTitle.length); // change text
+        setShowHead(true); // fade in
+      }, 500); // match fade duration
+    }, 2000); // change every 2 seconds (you can set to 1000 for 1s)
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -88,6 +102,34 @@ export default function Home() {
     };
   }, []);
 
+  const headerTitle = [
+    {
+      headline: "luxury Living, One Window at a Time",
+      subheadline:
+        "Trusted by 1,000+ Filipino homeowners & contractors. Upgrade your home with blinds that combine style, comfort, and privacy.",
+    },
+    {
+      headline: "From Ordinary Windows to Extraordinary Homes",
+      subheadline:
+        "Join hundreds of satisfied clients who transformed their spaces with CPC MNL Blinds. Book your free consultation today!",
+    },
+    {
+      headline: "Redefine Your Windows. Redefine Your Living",
+      subheadline:
+        "Elevating Filipino homes since 20XX. Get your Custom Blinds consultation now and experience the CPC MNL difference.",
+    },
+    {
+      headline: "Your Home, Elevated",
+      subheadline:
+        "Trusted by top articts and designers, Schedule your free measurement today and see how we can transform your space.",
+    },
+    {
+      headline: "Because Every Window Deserves Luxury.",
+      subheadline:
+        "CPC MNL Blinds has beautified 700+ homes nationwide. Start your home upgrade today with a free design consultation.",
+    },
+  ];
+
   return (
     <>
       {/* Hero section with video */}
@@ -104,22 +146,25 @@ export default function Home() {
         />
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full gap-6">
           <span
-            className={`text-white text-2xl md:text-4xl lg:text-[50px] text-center leading-10 md:leading-15 font-bold transition-all duration-1000 ${
+            className={`text-white text-2xl md:text-4xl lg:text-[50px] text-center leading-10 md:leading-[60px] font-bold transition-all duration-500 ${
               show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            Transform Your Windows. <br /> Transform Your Home.
-          </span>
-          <span className="bg-white w-[200px] md:w-[300px] lg:w-[400px] h-[1px]"></span>
-          <p
-            className={`text-white text-[12px] md:text-base font-medium text-center transition-all duration-1000 delay-200 ${
-              show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            Stylish, custom blinds that bring comfort, privacy,
+            {headerTitle[index].headline.split(" ").slice(0, 3).join(" ")}{" "}
             <br />
-            and elegance to every room.
+            {headerTitle[index].headline.split(" ").slice(3).join(" ")}
+          </span>
+
+          <span className="bg-white w-[200px] md:w-[300px] lg:w-[400px] h-[1px]"></span>
+
+          <p
+            className={`text-white text-[12px] md:text-base font-medium text-center transition-all duration-500 delay-100 ${
+              show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } max-w-xs md:max-w-md mx-auto leading-snug`}
+          >
+            {headerTitle[index].subheadline}
           </p>
+
           <Button
             variant="contained"
             color="primary"

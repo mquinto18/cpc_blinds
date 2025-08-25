@@ -14,7 +14,9 @@ import { useState } from "react";
 
 export default function CombiDetailsModal() {
   const [open, setOpen] = useState(true);
-  const [blindType, setBlindType] = useState("Roller-Blinds-Semi-Blackout");
+  const [blindType, setBlindType] = useState("Roller-Blinds-Blackout");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [variantIndex, setVariantIndex] = useState(0); // 👈 track variant slideshow
   const router = useRouter();
 
   const handleClose = () => {
@@ -22,23 +24,81 @@ export default function CombiDetailsModal() {
     router.back();
   };
 
-  const blindImages: Record<string, string> = {
-    "Roller-Blinds-Semi-Blackout": "/roller2.jpeg",
-    "Roller-Blinds-Sunscreen": "/roller4.jpeg",
-    "Roller-Blinds-Blackout": "/roller5.jpg",
+  // Blind type -> images -> each image has a name + its own colors
+  const blindsData: Record<
+    string,
+    { image: string; name: string; images: string[] }[]
+  > = {
+    "Roller-Blinds-Blackout": [
+      {
+        image: "/rollers/BLACKOUTROLLER/PAVILION/pavillion.jpg",
+        name: "Roller Blinds - Pavilion",
+        images: ["/rollers/BLACKOUTROLLER/PAVILION/800.jpg"],
+      },
+      {
+        image: "/rollers/BLACKOUTROLLER/REGENT/regenttt.jpg",
+        name: "Roller Blinds - Regent",
+        images: [
+          "/rollers/BLACKOUTROLLER/REGENT/REGENT.jpg",
+          "/rollers/BLACKOUTROLLER/REGENT/REGENT1.png",
+        ],
+      },
+      {
+        image: "/rollers/BLACKOUTROLLER/REGENT/sumit.jpg",
+        name: "Roller Blinds - Summit",
+        images: ["/rollers/BLACKOUTROLLER/SUMMIT/SUMITCODE.jpg"],
+      },
+    ],
+    "Roller-Blinds-Semi-Blackout": [
+      {
+        image: "/koreanCombi/semiblackout/PRIMEWOOD/PRIMEWOOD.jpg",
+        name: "Semi Blackout - Woodlook Prime",
+        images: ["/koreanCombi/semiblackout/PRIMEWOOD/COLOR.jpg"],
+      },
+    ],
+    "Roller-Blinds-Sunscreen": [
+      {
+        image: "/rollers/PIONEERSUNSCREEN/.jpg",
+        name: "Roller Blinds - Sunscreen",
+        images: [
+          "/rollers/PIONEERSUNSCREEN/CODE.jpg",
+          "/rollers/PIONEERSUNSCREEN/CODE2.jpg",
+        ],
+      },
+    ],
   };
 
-  const boxColors = [
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple",
-    "teal",
-    "pink",
-    "yellow",
-    "gray",
-  ];
+  const handleNext = () => {
+    const total = blindsData[blindType].length;
+    setCurrentImageIndex((prev) => (prev + 1) % total);
+    setVariantIndex(0); // reset variant when switching type
+  };
+
+  const handlePrev = () => {
+    const total = blindsData[blindType].length;
+    setCurrentImageIndex((prev) => (prev - 1 + total) % total);
+    setVariantIndex(0);
+  };
+
+  const handleBlindChange = (value: string) => {
+    setBlindType(value);
+    setCurrentImageIndex(0);
+    setVariantIndex(0);
+  };
+
+  const handleNextVariant = () => {
+    const total = currentData.images.length;
+    setVariantIndex((prev) => (prev + 1) % total);
+  };
+
+  const handlePrevVariant = () => {
+    const total = currentData.images.length;
+    setVariantIndex((prev) => (prev - 1 + total) % total);
+  };
+
+  const currentData = blindsData[blindType][currentImageIndex];
+  const mainImage = currentData.image;
+  const variantImage = currentData.images[variantIndex];
 
   return (
     <Modal open={open} onClose={handleClose}>
@@ -76,19 +136,18 @@ export default function CombiDetailsModal() {
             label="Choose Blind Type"
             onChange={(e) => setBlindType(e.target.value)}
           >
+            <MenuItem value="Roller-Blinds-Blackout">
+              Premium Blackout Blinds (Our best seller)
+            </MenuItem>
             <MenuItem value="Roller-Blinds-Semi-Blackout">
               Roller Blinds Semi Blackout
             </MenuItem>
             <MenuItem value="Roller-Blinds-Sunscreen">
               Roller Blinds Sunscreen
             </MenuItem>
-            <MenuItem value="Roller-Blinds-Blackout">
-              Premium Blackout Blinds (Our best seller)
-            </MenuItem>
           </Select>
         </FormControl>
 
-        {/* Image + 9 boxes */}
         <Box
           sx={{
             mt: 4,
@@ -99,41 +158,98 @@ export default function CombiDetailsModal() {
             justifyContent: "center",
           }}
         >
-          {/* Image */}
-          <Box
-            component="img"
-            src={blindImages[blindType]}
-            alt="Combi Blinds Sample"
-            sx={{
-              width: { xs: "100%", md: "auto" },
-              maxWidth: 900,
-              height: 500,
-              objectFit: "cover",
-              borderRadius: 2,
-            }}
-          />
-
-          {/* Right side 3x3 boxes */}
+          {/* Main Image (Left) */}
           <Box
             sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gridTemplateRows: "repeat(3, 1fr)",
-              gap: 4,
-              width: { xs: "100%", md: 500 },
+              flex: 1, // take half width
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            {boxColors.map((color, index) => (
+            <Typography
+              variant="subtitle1"
+              sx={{
+                mb: 2,
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                textAlign: "center",
+              }}
+            >
+              {currentData.name}
+            </Typography>
+            <Box
+              component="img"
+              src={mainImage}
+              alt={currentData.name}
+              sx={{
+                width: "100%",
+                height: { xs: 300, md: 500 }, // responsive height
+                borderRadius: 2,
+                objectFit: "cover", // keep cover for main image
+              }}
+            />
+            <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
+              <Button variant="outlined" onClick={handlePrev}>
+                Previous
+              </Button>
+              <Button variant="outlined" onClick={handleNext}>
+                Next
+              </Button>
+            </Box>
+          </Box>
+
+          {/* Variant Image (Right, one at a time) */}
+          <Box
+            sx={{
+              flex: 1, // take half width
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              sx={{
+                mb: 2,
+                fontWeight: "bold",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+            >
+              Variant Sample
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                height: { xs: 300, md: 500 }, // container height
+                borderRadius: 2,
+                backgroundColor: "#f5f5f5", // optional: neutral bg behind image
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <Box
-                key={index}
+                component="img"
+                src={variantImage}
+                alt={`variant-${variantIndex}`}
                 sx={{
-                  width: "100%",
-                  aspectRatio: "1 / 1", // always square
-                  bgcolor: color,
-                  borderRadius: 1,
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain", // ✅ ensures full image is visible
+                  borderRadius: 2,
                 }}
               />
-            ))}
+            </Box>
+            <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
+              <Button variant="outlined" onClick={handlePrevVariant}>
+                Prev Sample
+              </Button>
+              <Button variant="outlined" onClick={handleNextVariant}>
+                Next Sample
+              </Button>
+            </Box>
           </Box>
         </Box>
 
