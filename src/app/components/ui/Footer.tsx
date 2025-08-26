@@ -102,7 +102,7 @@ export default function Footer() {
               Contacts
             </h3>
             <p className="text-gray-700">0916.418.0061</p>
-            <p className="text-gray-700 break-words">CPCMNLWINDOW@GMAIL.COM</p>
+            <p className="text-gray-700 break-words">cpcmnlwindow@gmail.com</p>
           </div>
         </div>
       </div>

@@ -70,12 +70,12 @@ export default function ContactInfo() {
               priority
             />
             <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-snug">
+              <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-snug">
                 Get your free <br /> quotation now.
               </h2>
               <div>
                 <p className="flex items-center font-bold gap-2 text-lg mb-2">
-                  <PhoneIcon /> +66 9519 4016
+                  <PhoneIcon /> +639164180061
                 </p>
                 <p className="flex items-center gap-2 font-bold text-lg">
                   <EmailIcon sx={{ color: "white" }} />

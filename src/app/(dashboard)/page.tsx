@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 import ContactInfo from "../components/ui/contactInfo";
 import { useRouter } from "next/navigation";
 import Footer from "../components/ui/Footer";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
   CPCproducts,
   CPCImages,
@@ -41,12 +41,8 @@ export default function Home() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowHead(false); // fade out
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % headerTitle.length); // change text
-        setShowHead(true); // fade in
-      }, 500); // match fade duration
-    }, 2000); // change every 2 seconds (you can set to 1000 for 1s)
+      setIndex((prev) => (prev + 1) % headerTitle.length);
+    }, 5000); // change every 5s
 
     return () => clearInterval(interval);
   }, []);
@@ -146,11 +142,10 @@ export default function Home() {
         />
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full gap-6">
           <span
-            className={`text-white text-2xl md:text-4xl lg:text-[50px] text-center leading-10 md:leading-[60px] font-bold transition-all duration-500 ${
-              show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            key={index} // important! forces React to re-render and apply animation
+            className="fade-pop text-white text-2xl md:text-4xl lg:text-[50px] text-center leading-10 md:leading-[60px] font-bold"
           >
-            {headerTitle[index].headline.split(" ").slice(0, 3).join(" ")}{" "}
+            {headerTitle[index].headline.split(" ").slice(0, 3).join(" ")}
             <br />
             {headerTitle[index].headline.split(" ").slice(3).join(" ")}
           </span>
@@ -1015,33 +1010,59 @@ export default function Home() {
             </h2>
 
             {/* Scrollable Products */}
-            <div className="overflow-x-auto">
-              <div className="flex sm:flex-wrap gap-6 sm:gap-8">
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex gap-6 sm:gap-8 snap-x snap-mandatory">
                 {recentProducts.map((product, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 w-[80%] xs:w-[70%] sm:w-[48%] md:w-[30%] lg:w-[23%]"
+                    className="flex-shrink-0 w-[80%] xs:w-[70%] sm:w-[48%] md:w-[30%] lg:w-[23%] snap-start bg-white rounded-xl shadow-md p-3"
                   >
                     {/* Image */}
                     <img
                       src={product.image}
                       alt={`Recent Product ${index + 1}`}
-                      className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover rounded-lg shadow-md"
+                      className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover rounded-lg"
                     />
 
-                    {/* Feedback + Person */}
-                    <div className="flex items-start gap-2 mt-3">
-                      <Person fontSize="medium" className="text-gray-600" />
-                      <p className="text-sm sm:text-base italic text-gray-700">
-                        &quot;{product.feedback}&quot;
-                      </p>
-                    </div>
+                    {/* Comments - Horizontal scroll */}
+                    <div className="mt-3 overflow-x-auto scrollbar-hide">
+                      <div className="flex gap-4 snap-x snap-mandatory">
+                        {product.comments.map((comment, i) => (
+                          <div
+                            key={i}
+                            className="flex-shrink-0 w-full snap-start bg-gray-50 p-3 rounded-lg"
+                          >
+                            <div className="flex items-start gap-3">
+                              {/* Avatar */}
+                              <AccountCircleIcon sx={{ fontSize: 48 }} />
 
-                    {/* Stars */}
-                    <div className="flex pl-7 mt-2 text-yellow-500">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} fontSize="small" />
-                      ))}
+                              <div className="flex flex-col">
+                                {/* Name + Time */}
+                                <div className="flex items-center gap-2">
+                                  <span className="font-semibold text-gray-800 text-sm">
+                                    {comment.name}
+                                  </span>
+                                  <span className="text-xs text-gray-500">
+                                    · {comment.time}
+                                  </span>
+                                </div>
+
+                                {/* Feedback */}
+                                <p className="text-sm text-gray-700 leading-snug">
+                                  {comment.feedback}
+                                </p>
+
+                                {/* Stars */}
+                                <div className="flex mt-1 text-yellow-500">
+                                  {[...Array(5)].map((_, starIndex) => (
+                                    <Star key={starIndex} fontSize="small" />
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ))}
