@@ -254,26 +254,27 @@ export default function Home() {
             key={index}
             className="relative flex cursor-pointer flex-col items-center 
                  min-w-[200px] w-[300px] h-[600px] group overflow-hidden 
-                 rounded-[20px] shadow-md"
+                 rounded-[20px] shadow-md transition-all duration-700 ease-in-out"
           >
+            {/* Image */}
             <img
               src={item.image}
               alt={item.productName}
               className="w-full h-full object-cover rounded-[20px] transition-transform 
-                   duration-500 ease-in-out group-hover:scale-110"
+                   duration-700 ease-in-out group-hover:scale-105 group-hover:rotate-1"
             />
 
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/40 rounded-[20px]"></div>
+            {/* Diagonal Reveal Layer */}
+            <div
+              className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent 
+                      translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"
+            ></div>
 
-            {/* Centered vertical text */}
+            {/* Big Product Name Reveal */}
             <span
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                   text-white text-[25px] md:text-[20px] font-bold underline"
-              style={{
-                writingMode: "vertical-rl",
-                textOrientation: "mixed",
-              }}
+              className="absolute inset-0 flex items-center justify-center text-center 
+                   text-white text-[15px] font-extrabold tracking-wide opacity-0 
+                   group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
             >
               {item.productName}
             </span>
@@ -315,9 +316,12 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
               {/* Left main image */}
               <div className="w-full md:w-auto">
-                <img
-                  src={combiBlinds[0].image}
-                  alt="Main Blind"
+                <video
+                  src={combiBlinds[0].image} // <-- replace with your video field
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
                 />
               </div>
@@ -490,10 +494,13 @@ export default function Home() {
 
               {/* Right main image */}
               <div className="w-full md:w-auto">
-                <img
-                  src={rollerBlindsImg[0].image}
-                  alt="Main Blind"
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tr-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                <video
+                  src={rollerBlindsImg[0].image} // <-- replace with your video field
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
                 />
               </div>
             </div>
@@ -503,11 +510,14 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Images Section */}
             <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
-              {/* Left main image */}
+              {/* Left main video */}
               <div className="w-full md:w-auto">
-                <img
-                  src={curtainsBlindsImg[0].image}
-                  alt="Main Blind"
+                <video
+                  src={curtainsBlindsImg[0].image} // <-- replace with your video field
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
                 />
               </div>
@@ -679,10 +689,13 @@ export default function Home() {
 
               {/* Right main image */}
               <div className="w-full md:w-auto">
-                <img
-                  src={venetianBlindsImg[0].image}
-                  alt="Main Blind"
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tr-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                <video
+                  src={venetianBlindsImg[0].image} // <-- replace with your video field
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
                 />
               </div>
             </div>
@@ -694,9 +707,12 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
               {/* Left main image */}
               <div className="w-full md:w-auto">
-                <img
-                  src={verticalBlindsImg[0].image}
-                  alt="Main Blind"
+                <video
+                  src={verticalBlindsImg[0].image} // <-- replace with your video field
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
                 />
               </div>
@@ -884,9 +900,12 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
               {/* Left main image */}
               <div className="w-full md:w-auto">
-                <img
-                  src={accordionBlindsImg[0].image}
-                  alt="Main Blind"
+                <video
+                  src={accordionBlindsImg[0].image} // <-- replace with your video field
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
                 />
               </div>

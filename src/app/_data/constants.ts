@@ -154,7 +154,7 @@ export const CPCImages = [
 
 export const combiBlinds = [
   {
-    image: "/combi10.jpg",
+    image: "/koreanMain.mp4",
   },
   {
     image: "/3.jpg",
@@ -171,7 +171,7 @@ export const combiBlinds = [
 ];
 export const rollerBlindsImg = [
   {
-    image: "/roller6.jpg",
+    image: "/rollersMain.mp4",
   },
   {
     image: "/roller1.jpg",
@@ -189,7 +189,7 @@ export const rollerBlindsImg = [
 
 export const curtainsBlindsImg = [
   {
-    image: "/curtains2.jpg",
+    image: "/curtainsMain.mp4",
   },
   {
     image: "/curtains1.jpg",
@@ -203,6 +203,9 @@ export const curtainsBlindsImg = [
 ];
 
 export const venetianBlindsImg = [
+  {
+    image: "/venetianMain.mp4",
+  },
   {
     image: "/VEN2.jpg",
   },
@@ -219,7 +222,7 @@ export const venetianBlindsImg = [
 
 export const verticalBlindsImg = [
   {
-    image: "/Vertical-BlindsPVC2.jpg",
+    image: "/verticalMain.mp4",
   },
   {
     image: "/Vertical-Blinds(pvc).jpg",
@@ -246,6 +249,9 @@ export const woodenBlindsImg = [
   },
 ];
 export const accordionBlindsImg = [
+  {
+    image: "/accordionMain.mp4",
+  },
   {
     image: "/accordion2.png",
   },

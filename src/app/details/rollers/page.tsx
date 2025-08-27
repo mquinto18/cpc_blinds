@@ -51,19 +51,16 @@ export default function CombiDetailsModal() {
     ],
     "Roller-Blinds-Semi-Blackout": [
       {
-        image: "/koreanCombi/semiblackout/PRIMEWOOD/PRIMEWOOD.jpg",
-        name: "Semi Blackout - Woodlook Prime",
-        images: ["/koreanCombi/semiblackout/PRIMEWOOD/COLOR.jpg"],
+        image: "",
+        name: "",
+        images: [""],
       },
     ],
     "Roller-Blinds-Sunscreen": [
       {
         image: "/rollers/PIONEERSUNSCREEN/.jpg",
         name: "Roller Blinds - Sunscreen",
-        images: [
-          "/rollers/PIONEERSUNSCREEN/CODE.jpg",
-          "/rollers/PIONEERSUNSCREEN/CODE2.jpg",
-        ],
+        images: ["/rollers/PIONEERSUNSCREEN/rollerCollor.png"],
       },
     ],
   };
