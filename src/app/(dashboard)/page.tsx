@@ -42,7 +42,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % headerTitle.length);
-    }, 5000); // change every 5s
+    }, 10000); // change every 5s
 
     return () => clearInterval(interval);
   }, []);
