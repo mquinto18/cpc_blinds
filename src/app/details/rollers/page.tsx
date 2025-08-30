@@ -31,12 +31,12 @@ export default function CombiDetailsModal() {
   > = {
     "Roller-Blinds-Blackout": [
       {
-        image: "/rollers/BLACKOUTROLLER/PAVILION/pavillion.jpg",
+        image: "/rollers/BLACKOUTROLLER/PAVILION/pavilionIMG.jpg",
         name: "Roller Blinds - Pavilion",
         images: ["/rollers/BLACKOUTROLLER/PAVILION/800.jpg"],
       },
       {
-        image: "/rollers/BLACKOUTROLLER/REGENT/regenttt.jpg",
+        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG.jpg",
         name: "Roller Blinds - Regent",
         images: [
           "/rollers/BLACKOUTROLLER/REGENT/REGENT.jpg",
@@ -44,7 +44,7 @@ export default function CombiDetailsModal() {
         ],
       },
       {
-        image: "/rollers/BLACKOUTROLLER/REGENT/sumit.jpg",
+        image: "/rollers/BLACKOUTROLLER/SUMMIT/summitIMG.jpg",
         name: "Roller Blinds - Summit",
         images: ["/rollers/BLACKOUTROLLER/SUMMIT/SUMITCODE.jpg"],
       },
@@ -58,7 +58,7 @@ export default function CombiDetailsModal() {
     ],
     "Roller-Blinds-Sunscreen": [
       {
-        image: "/rollers/PIONEERSUNSCREEN/.jpg",
+        image: "/rollers/PIONEERSUNSCREEN/suncreenIMG.jpg",
         name: "Roller Blinds - Sunscreen",
         images: ["/rollers/PIONEERSUNSCREEN/rollerCollor.png"],
       },
