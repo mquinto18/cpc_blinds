@@ -51,9 +51,9 @@ export default function CombiDetailsModal() {
     ],
     "Roller-Blinds-Semi-Blackout": [
       {
-        image: "",
-        name: "",
-        images: [""],
+        image: "/koreanCombi/semiblackout/PRIMEWOOD/PRIMEWOOD.jpg",
+        name: "Semi Blackout - Woodlook Prime",
+        images: ["/koreanCombi/semiblackout/PRIMEWOOD/COLOR.jpg"],
       },
     ],
     "Roller-Blinds-Sunscreen": [
@@ -187,10 +187,20 @@ export default function CombiDetailsModal() {
               }}
             />
             <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
-              <Button variant="outlined" onClick={handlePrev}>
+              <Button
+                variant="outlined"
+                onClick={handlePrev}
+                disabled={currentImageIndex === 0}
+              >
                 Previous
               </Button>
-              <Button variant="outlined" onClick={handleNext}>
+              <Button
+                variant="outlined"
+                onClick={handleNext}
+                disabled={
+                  currentImageIndex === blindsData[blindType].length - 1
+                }
+              >
                 Next
               </Button>
             </Box>
@@ -240,10 +250,18 @@ export default function CombiDetailsModal() {
               />
             </Box>
             <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
-              <Button variant="outlined" onClick={handlePrevVariant}>
+              <Button
+                variant="outlined"
+                onClick={handlePrevVariant}
+                disabled={variantIndex === 0}
+              >
                 Prev Sample
               </Button>
-              <Button variant="outlined" onClick={handleNextVariant}>
+              <Button
+                variant="outlined"
+                onClick={handleNextVariant}
+                disabled={variantIndex === currentData.images.length - 1}
+              >
                 Next Sample
               </Button>
             </Box>

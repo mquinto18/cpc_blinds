@@ -20,7 +20,7 @@ export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const menuItems = ["Home", "Products", "About Us", "Contacts"];
+  const menuItems = ["Home", "Products", "Contacts"];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -38,6 +38,34 @@ export default function Navbar() {
     setDrawerOpen(!drawerOpen);
   };
 
+  // ✅ Reusable scroll handler for both desktop + mobile
+  const handleScrollTo = (item: string) => {
+    setActive(item);
+
+    if (item === "Home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    if (item === "Products") {
+      const section = document.getElementById("products");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    if (item === "Contacts") {
+      const section = document.getElementById("contacts");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    // 👇 Close drawer after click in mobile
+    if (isMobile) {
+      setDrawerOpen(false);
+    }
+  };
+
   const drawer = (
     <Box
       sx={{
@@ -48,13 +76,12 @@ export default function Navbar() {
         p: 2,
       }}
       role="presentation"
-      onClick={handleDrawerToggle}
     >
       <List>
         {menuItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton
-              onClick={() => setActive(item)}
+              onClick={() => handleScrollTo(item)} // ✅ smooth scroll here
               sx={{
                 borderRadius: 2,
                 backgroundColor: active === item ? "white" : "transparent",
@@ -80,7 +107,7 @@ export default function Navbar() {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: scrolled ? "rgba(0,0,0,0.0)" : "transparent", // black blur only when scrolled
+          backgroundColor: scrolled ? "rgba(0,0,0,0.0)" : "transparent",
           backdropFilter: scrolled ? "blur(10px)" : "none",
           boxShadow: "none",
           transition: "background-color 0.3s ease, backdrop-filter 0.3s ease",
@@ -97,15 +124,15 @@ export default function Navbar() {
           {/* Logo Image */}
           <Box sx={{ flexGrow: 1, cursor: "pointer" }}>
             <img
-              src="/navLogo.jpeg" // replace with your logo path
+              src="/navLogo.jpeg"
               alt="Logo"
               style={{
                 height: 50,
-                width: 50, // make it a square so the circle is perfect
-                borderRadius: "50%", // makes it circular
-                objectFit: "cover", // ensures the image fills the circle
-                backgroundColor: "white", // optional: white background inside the circle
-                padding: 2, // optional: add some padding around the image
+                width: 50,
+                borderRadius: "50%",
+                objectFit: "cover",
+                backgroundColor: "white",
+                padding: 2,
               }}
             />
           </Box>
@@ -138,27 +165,7 @@ export default function Navbar() {
               {menuItems.map((item) => (
                 <Button
                   key={item}
-                  onClick={() => {
-                    setActive(item);
-
-                    if (item === "Home") {
-                      window.scrollTo({ top: 0, behavior: "smooth" }); // 👈 scroll to top
-                    }
-
-                    if (item === "Products") {
-                      const section = document.getElementById("products"); // 👈 get section by id
-                      if (section) {
-                        section.scrollIntoView({ behavior: "smooth" }); // 👈 scroll to products
-                      }
-                    }
-
-                    if (item === "Contacts") {
-                      const section = document.getElementById("contacts"); // 👈 get section by id
-                      if (section) {
-                        section.scrollIntoView({ behavior: "smooth" }); // 👈 scroll to contacts
-                      }
-                    }
-                  }}
+                  onClick={() => handleScrollTo(item)} // ✅ smooth scroll here too
                   sx={{
                     textTransform: "none",
                     fontSize: "16px",

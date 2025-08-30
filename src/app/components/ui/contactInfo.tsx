@@ -10,6 +10,8 @@ import {
   Stack,
   Snackbar,
   Alert,
+  MenuItem,
+  CircularProgress, // 👈 added
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -17,12 +19,31 @@ import PhoneIcon from "@mui/icons-material/Phone";
 export default function ContactInfo() {
   const [open, setOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
+  const [loading, setLoading] = useState(false); // 👈 NEW state
 
+  // Form data state (controlled from the start)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
+  // Controlled state for FAQ dropdown
+  const [selectedFaq, setSelectedFaq] = useState("");
+
+  // Sample FAQs
+  const faqOptions = [
+    "What types of window blinds do you offer?",
+    "Do you provide free measurement and installation?",
+    "Can I request a custom size for my windows?",
+    "What materials are available for your blinds?",
+    "How long does delivery and installation take?",
+    "Do you offer warranty on blinds?",
+    "What are the price ranges for window blinds?",
+    "Can I order blinds online?",
+    "Do you have blackout blinds for bedrooms?",
+    "How do I clean and maintain the blinds?",
+  ];
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -30,8 +51,20 @@ export default function ContactInfo() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle FAQ selection
+  const handleFaqSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedValue = e.target.value;
+    setSelectedFaq(selectedValue);
+
+    setFormData((prev) => ({
+      ...prev,
+      message: selectedValue, // replace message with FAQ
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true); // 👈 start loading
 
     try {
       const res = await fetch("/api/send-email", {
@@ -43,13 +76,16 @@ export default function ContactInfo() {
       const data = await res.json();
 
       if (data.success) {
-        setOpen(true); // success toast
-        setFormData({ name: "", email: "", message: "" }); // reset form
+        setOpen(true);
+        setFormData({ name: "", email: "", message: "" });
+        setSelectedFaq(""); // reset FAQ
       } else {
-        setErrorOpen(true); // error toast
+        setErrorOpen(true);
       }
     } catch (error) {
       setErrorOpen(true);
+    } finally {
+      setLoading(false); // 👈 stop loading
     }
   };
 
@@ -117,6 +153,7 @@ export default function ContactInfo() {
             >
               <form onSubmit={handleSubmit}>
                 <Stack spacing={3}>
+                  {/* Name */}
                   <TextField
                     label="Name"
                     name="name"
@@ -125,6 +162,8 @@ export default function ContactInfo() {
                     fullWidth
                     required
                   />
+
+                  {/* Email */}
                   <TextField
                     label="Email"
                     name="email"
@@ -134,6 +173,24 @@ export default function ContactInfo() {
                     fullWidth
                     required
                   />
+
+                  {/* FAQ Dropdown */}
+                  <TextField
+                    select
+                    label="Frequently Asked Questions"
+                    value={selectedFaq}
+                    onChange={handleFaqSelect}
+                    fullWidth
+                  >
+                    <MenuItem value="">Select a question...</MenuItem>
+                    {faqOptions.map((faq, index) => (
+                      <MenuItem key={index} value={faq}>
+                        {faq}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+
+                  {/* Message */}
                   <TextField
                     label="Message"
                     name="message"
@@ -144,10 +201,13 @@ export default function ContactInfo() {
                     fullWidth
                     required
                   />
+
+                  {/* Submit */}
                   <Button
                     type="submit"
                     variant="contained"
                     fullWidth
+                    disabled={loading} // 👈 disable while loading
                     sx={{
                       mt: 1,
                       backgroundImage:
@@ -164,7 +224,11 @@ export default function ContactInfo() {
                       },
                     }}
                   >
-                    Confirm
+                    {loading ? (
+                      <CircularProgress size={24} sx={{ color: "black" }} />
+                    ) : (
+                      "Confirm"
+                    )}
                   </Button>
                 </Stack>
               </form>
