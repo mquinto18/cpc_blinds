@@ -102,7 +102,7 @@ export default function CombiDetailsModal() {
           <div className="flex flex-col gap-4 mt-8">
             <span className="bg-black h-[12px] w-[150px] rounded-full "></span>
             <span className="text-black text-base md:text-2xl lg:text-4xl leading-7 md:leading-14">
-              Accordion and Folding Doors
+              Accordion/Folding Doors
             </span>
           </div>
         </Typography>
@@ -117,7 +117,7 @@ export default function CombiDetailsModal() {
             onChange={(e) => setBlindType(e.target.value)}
           >
             <MenuItem value="natural-accordion-door">
-              Natural-Accordion-Door
+              Natural-Accordion Door
             </MenuItem>
           </Select>
         </FormControl>

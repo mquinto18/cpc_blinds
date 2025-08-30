@@ -107,7 +107,7 @@ export default function ContactInfo() {
             />
             <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
               <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-snug">
-                Get your free <br /> quotation now.
+                GET YOUR FREE <br /> QUOTATION NOW.
               </h2>
               <div>
                 <p className="flex items-center font-bold gap-2 text-lg mb-2">
