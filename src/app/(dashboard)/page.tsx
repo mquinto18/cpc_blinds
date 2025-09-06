@@ -8,6 +8,7 @@ import ContactInfo from "../components/ui/contactInfo";
 import { useRouter } from "next/navigation";
 import Footer from "../components/ui/Footer";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AOS from "aos";
 import {
   CPCproducts,
   CPCImages,
@@ -38,6 +39,13 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const [showHead, setShowHead] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      once: true, // only animate once
+    });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -145,9 +153,7 @@ export default function Home() {
             key={index} // important! forces React to re-render and apply animation
             className="fade-pop text-white text-2xl md:text-4xl lg:text-[50px] text-center leading-10 md:leading-[60px] font-bold"
           >
-            {headerTitle[index].headline.split(" ").slice(0, 3).join(" ")}
-            <br />
-            {headerTitle[index].headline.split(" ").slice(3).join(" ")}
+            Transform Your Windows. <br /> Transform Your Home.
           </span>
 
           <span className="bg-white w-[200px] md:w-[300px] lg:w-[400px] h-[1px]"></span>
@@ -231,7 +237,10 @@ export default function Home() {
             }}
           ></span>
 
-          <span className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14">
+          <span
+            className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14"
+            data-aos="fade-up"
+          >
             Window blinds, crafted with care <br /> and designed for light and
             life.
           </span>
@@ -239,6 +248,7 @@ export default function Home() {
             className={`text-black text-[12px] md:text-base font-medium text-center transition-all duration-1000 delay-200 ${
               show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
+            data-aos="fade-up"
           >
             Our window blinds blend timeless design with everyday function,
             giving you
@@ -248,7 +258,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex gap-6 mt-8 overflow-x-auto">
+      <div className="flex gap-6 mt-8 overflow-x-auto" data-aos="fade-up">
         {CPCImages.map((item, index) => (
           <div
             key={index}
@@ -273,7 +283,7 @@ export default function Home() {
             {/* Big Product Name Reveal */}
             <span
               className="absolute inset-0 flex items-center justify-center text-center 
-                   text-white text-[15px] font-extrabold tracking-wide opacity-0 
+                   text-white text-[12px] font-extrabold tracking-wide opacity-0 
                    group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
             >
               {item.productName}
@@ -294,13 +304,17 @@ export default function Home() {
               }}
             ></span>
 
-            <span className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14">
+            <span
+              className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14"
+              data-aos="fade-up"
+            >
               Inspiration Gallery
             </span>
             <p
               className={`text-black text-[12px] md:text-base font-medium text-center transition-all duration-1000 delay-200 ${
                 show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
+              data-aos="fade-up"
             >
               Discover how our window blinds transform spaces with style and
               <br />
@@ -313,7 +327,10 @@ export default function Home() {
           {/* kOREAN COMBI BLINDS */}
           <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Images Section */}
-            <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
+            <div
+              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              data-aos="fade-right"
+            >
               {/* Left main image */}
               <div className="w-full md:w-auto">
                 <video
@@ -323,11 +340,15 @@ export default function Home() {
                   muted
                   playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  onClick={() => router.push("/details/combi")}
                 />
               </div>
 
               {/* Right stacked images (hidden on mobile) */}
-              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
+              <div
+                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                onClick={() => router.push("/details/combi")}
+              >
                 {combiBlinds.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -341,7 +362,10 @@ export default function Home() {
             </div>
 
             {/* Korean Combi Blinds */}
-            <div className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto">
+            <div
+              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              data-aos="fade-left"
+            >
               {combiBlindsDetails.map((item, index) => {
                 if (item.type === "header") {
                   return (
@@ -411,7 +435,10 @@ export default function Home() {
           {/* ROLLER BLINDS */}
           <div className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Text & Details Section */}
-            <div className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto">
+            <div
+              className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              data-aos="fade-right"
+            >
               {RollerBlinds.map((item, index) => {
                 if (item.type === "header") {
                   return (
@@ -478,9 +505,15 @@ export default function Home() {
             </div>
 
             {/* Images Section */}
-            <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
+            <div
+              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              data-aos="fade-left"
+            >
               {/* Left stacked images (hidden on mobile) */}
-              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
+              <div
+                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                onClick={() => router.push("/details/rollers")}
+              >
                 {rollerBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -501,6 +534,7 @@ export default function Home() {
                   muted
                   playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  onClick={() => router.push("/details/rollers")}
                 />
               </div>
             </div>
@@ -509,7 +543,10 @@ export default function Home() {
           {/* Fabric curtain & Sheer */}
           <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Images Section */}
-            <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
+            <div
+              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              data-aos="fade-right"
+            >
               {/* Left main video */}
               <div className="w-full md:w-auto">
                 <video
@@ -519,11 +556,15 @@ export default function Home() {
                   muted
                   playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  onClick={() => router.push("/details/curtainSheer")}
                 />
               </div>
 
               {/* Right stacked images (hidden on mobile) */}
-              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
+              <div
+                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                onClick={() => router.push("/details/curtainSheer")}
+              >
                 {curtainsBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -537,7 +578,10 @@ export default function Home() {
             </div>
 
             {/* Korean Combi Blinds */}
-            <div className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto">
+            <div
+              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              data-aos="fade-left"
+            >
               {FabriccurtainSheer.map((item, index) => {
                 if (item.type === "header") {
                   return (
@@ -606,7 +650,10 @@ export default function Home() {
           {/* Venetian Blinds */}
           <div className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Text & Details Section */}
-            <div className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto">
+            <div
+              className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              data-aos="fade-right"
+            >
               {VenetianBlinds.map((item, index) => {
                 if (item.type === "header") {
                   return (
@@ -673,9 +720,15 @@ export default function Home() {
             </div>
 
             {/* Images Section */}
-            <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
+            <div
+              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              data-aos="fade-left"
+            >
               {/* Left stacked images */}
-              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
+              <div
+                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                onClick={() => router.push("/details/venetian")}
+              >
                 {venetianBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -696,6 +749,7 @@ export default function Home() {
                   muted
                   playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  onClick={() => router.push("/details/venetian")}
                 />
               </div>
             </div>
@@ -704,7 +758,10 @@ export default function Home() {
           {/* Vertical Blinds*/}
           <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Images Section */}
-            <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
+            <div
+              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              data-aos="fade-right"
+            >
               {/* Left main image */}
               <div className="w-full md:w-auto">
                 <video
@@ -714,11 +771,15 @@ export default function Home() {
                   muted
                   playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  onClick={() => router.push("/details/vertical")}
                 />
               </div>
 
               {/* Right stacked images */}
-              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
+              <div
+                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                onClick={() => router.push("/details/vertical")}
+              >
                 {verticalBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -732,7 +793,10 @@ export default function Home() {
             </div>
 
             {/* Korean Combi Blinds */}
-            <div className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto">
+            <div
+              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              data-aos="fade-left"
+            >
               {VerticalBlinds.map((item, index) => {
                 if (item.type === "header") {
                   return (
@@ -802,7 +866,10 @@ export default function Home() {
           {/* Wooden Blinds */}
           <div className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Text & Details Section */}
-            <div className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto">
+            <div
+              className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              data-aos="fade-right"
+            >
               {WoodenBlinds.map((item, index) => {
                 if (item.type === "header") {
                   return (
@@ -869,9 +936,15 @@ export default function Home() {
             </div>
 
             {/* Images Section */}
-            <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
+            <div
+              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              data-aos="fade-left"
+            >
               {/* Left stacked images */}
-              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
+              <div
+                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                onClick={() => router.push("/details/wooden")}
+              >
                 {woodenBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -885,10 +958,14 @@ export default function Home() {
 
               {/* Right main image */}
               <div className="w-full md:w-auto">
-                <img
-                  src={woodenBlindsImg[0].image}
-                  alt="Main Blind"
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tr-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                <video
+                  src={woodenBlindsImg[0].image} // <-- replace with your video field
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  onClick={() => router.push("/details/wooden")}
                 />
               </div>
             </div>
@@ -897,7 +974,10 @@ export default function Home() {
           {/* Accordion Blinds*/}
           <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
             {/* Images Section */}
-            <div className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto">
+            <div
+              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              data-aos="fade-right"
+            >
               {/* Left main image */}
               <div className="w-full md:w-auto">
                 <video
@@ -907,11 +987,15 @@ export default function Home() {
                   muted
                   playsInline
                   className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  onClick={() => router.push("/details/accordion")}
                 />
               </div>
 
               {/* Right stacked images */}
-              <div className="hidden md:flex flex-col gap-4 w-full md:w-1/4">
+              <div
+                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                onClick={() => router.push("/details/accordion")}
+              >
                 {accordionBlindsImg.slice(1).map((item, index) => (
                   <div key={index} className="h-[150px] md:h-[163px]">
                     <img
@@ -925,7 +1009,10 @@ export default function Home() {
             </div>
 
             {/* Korean Combi Blinds */}
-            <div className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto">
+            <div
+              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              data-aos="fade-left"
+            >
               {AccordionFoldingDoors.map((item, index) => {
                 if (item.type === "header") {
                   return (
@@ -1007,13 +1094,17 @@ export default function Home() {
                 }}
               ></span>
 
-              <span className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14">
+              <span
+                className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14"
+                data-aos="fade-up"
+              >
                 Recent Project
               </span>
               <p
                 className={`text-black text-[12px] md:text-base font-medium text-center transition-all duration-1000 delay-200 ${
                   show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
+                data-aos="fade-up"
               >
                 Discover how our window blinds transform spaces with style and
                 <br />
@@ -1022,7 +1113,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mx-4 sm:mx-6 md:mx-10 pb-5 mt-6 sm:mt-8 md:mt-10">
+          <div
+            className="mx-4 sm:mx-6 md:mx-10 pb-5 mt-6 sm:mt-8 md:mt-10"
+            data-aos="fade-up"
+          >
             {/* Feedback Title */}
             <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
               Customer Feedback
@@ -1101,13 +1195,17 @@ export default function Home() {
           }}
         ></span>
 
-        <span className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14">
+        <span
+          className="text-black text-base md:text-2xl lg:text-5xl text-center leading-7 md:leading-14"
+          data-aos="fade-up"
+        >
           Contact Us
         </span>
         <p
           className={`text-black text-[12px] md:text-base font-medium text-center transition-all duration-1000 delay-200 ${
             show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
+          data-aos="fade-up"
         >
           Discover how our window blinds transform spaces with style and
           <br />

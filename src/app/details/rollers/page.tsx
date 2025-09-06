@@ -31,36 +31,61 @@ export default function CombiDetailsModal() {
   > = {
     "Roller-Blinds-Blackout": [
       {
-        image: "/rollers/BLACKOUTROLLER/PAVILION/pavilionIMG.jpg",
+        image: "/rollers/BLACKOUTROLLER/PAVILION/pavillionIMG.png",
         name: "Roller Blinds - Pavilion",
-        images: ["/rollers/BLACKOUTROLLER/PAVILION/800.jpg"],
+        images: ["/rollers/BLACKOUTROLLER/PAVILION/pavilionColor.png"],
       },
       {
-        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG.jpg",
+        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG.png",
         name: "Roller Blinds - Regent",
-        images: [
-          "/rollers/BLACKOUTROLLER/REGENT/REGENT.jpg",
-          "/rollers/BLACKOUTROLLER/REGENT/REGENT1.png",
-        ],
+        images: ["/rollers/BLACKOUTROLLER/REGENT/regentColor.png"],
       },
       {
-        image: "/rollers/BLACKOUTROLLER/SUMMIT/summitIMG.jpg",
+        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG2.png",
+        name: "Roller Blinds - Regent",
+        images: ["/rollers/BLACKOUTROLLER/REGENT/regentColor2.png"],
+      },
+      {
+        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG3.png",
+        name: "Roller Blinds - Regent",
+        images: ["/rollers/BLACKOUTROLLER/REGENT/regentColor3.png"],
+      },
+      {
+        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG4.png",
+        name: "Roller Blinds - Regent",
+        images: ["/rollers/BLACKOUTROLLER/REGENT/regentColor4.png"],
+      },
+      {
+        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG5.png",
+        name: "Roller Blinds - Regent",
+        images: ["/rollers/BLACKOUTROLLER/REGENT/regentColor5.png"],
+      },
+      {
+        image: "/rollers/BLACKOUTROLLER/REGENT/regentIMG6.png",
+        name: "Roller Blinds - Regent",
+        images: ["/rollers/BLACKOUTROLLER/REGENT/regentColor6.png"],
+      },
+      {
+        image: "/rollers/BLACKOUTROLLER/SUMMIT/summitIMG.png",
         name: "Roller Blinds - Summit",
-        images: ["/rollers/BLACKOUTROLLER/SUMMIT/SUMITCODE.jpg"],
+        images: ["/rollers/BLACKOUTROLLER/SUMMIT/summitColor.png"],
       },
     ],
     "Roller-Blinds-Semi-Blackout": [
       {
-        image: "/koreanCombi/semiblackout/PRIMEWOOD/PRIMEWOOD.jpg",
-        name: "Semi Blackout - Woodlook Prime",
-        images: ["/koreanCombi/semiblackout/PRIMEWOOD/COLOR.jpg"],
+        image: "/rollers/PIONEERSUNSCREEN/suncreenIMG.jpg",
+        name: "Roller Blinds - Semi Blackout",
+        images: [
+          "/rollers/SEMIBLACKOUT/semiblackoutRoller.png",
+          "/rollers/SEMIBLACKOUT/semiblackoutRoller1.png",
+        ],
       },
     ],
     "Roller-Blinds-Sunscreen": [
       {
-        image: "/rollers/PIONEERSUNSCREEN/suncreenIMG.jpg",
+        image: "/rollers/PIONEERSUNSCREEN/rolllerSuncreenIMG.jpg",
         name: "Roller Blinds - Sunscreen",
-        images: ["/rollers/PIONEERSUNSCREEN/rollerCollor.png"],
+        images: ["/rollers/PIONEERSUNSCREEN/sunscreenColoro.png"],
       },
     ],
   };
@@ -131,16 +156,16 @@ export default function CombiDetailsModal() {
             labelId="blind-type-label"
             value={blindType}
             label="Choose Blind Type"
-            onChange={(e) => setBlindType(e.target.value)}
+            onChange={(e) => handleBlindChange(e.target.value)}
           >
             <MenuItem value="Roller-Blinds-Blackout">
-              Premium Blackout Blinds (Our best seller)
+              Premium-Blackout Blinds (Our best seller)
             </MenuItem>
             <MenuItem value="Roller-Blinds-Semi-Blackout">
-              Roller Blinds Semi Blackout
+              Roller-Blinds Semi Blackout
             </MenuItem>
             <MenuItem value="Roller-Blinds-Sunscreen">
-              Roller Blinds Sunscreen
+              Roller-Blinds Sunscreen
             </MenuItem>
           </Select>
         </FormControl>

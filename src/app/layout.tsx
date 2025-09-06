@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Preloader from "./components/Preloader";
 import "./globals.css";
 import MessageNowButton from "./components/ui/MessageNowButton";
+import "aos/dist/aos.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

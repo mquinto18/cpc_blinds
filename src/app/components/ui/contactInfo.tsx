@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Box,
@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
+import AOS from "aos";
 
 export default function ContactInfo() {
   const [open, setOpen] = useState(false);
@@ -27,6 +28,13 @@ export default function ContactInfo() {
     email: "",
     message: "",
   });
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      once: true, // only animate once
+    });
+  }, []);
 
   // Controlled state for FAQ dropdown
   const [selectedFaq, setSelectedFaq] = useState("");
@@ -95,7 +103,10 @@ export default function ContactInfo() {
   return (
     <>
       <div className="mx-5 mt-10 rounded-2xl shadow-[0_0_10px_rgba(0,0,0,0.1)] overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1980px] mx-auto">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1980px] mx-auto"
+          data-aos="fade-up"
+        >
           {/* LEFT: Image with text overlay */}
           <div className="relative h-[400px] md:h-auto">
             <Image
@@ -106,16 +117,28 @@ export default function ContactInfo() {
               priority
             />
             <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
-              <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-snug">
+              <h2
+                className="text-3xl md:text-6xl font-bold mb-4 leading-snug"
+                data-aos="fade-up"
+              >
                 GET YOUR FREE <br /> QUOTATION NOW.
               </h2>
               <div>
                 <p className="flex items-center font-bold gap-2 text-lg mb-2">
-                  <PhoneIcon /> +639164180061
+                  <PhoneIcon />
+                  <a href="tel:+639164180061" className="hover:underline">
+                    +639164180061
+                  </a>
                 </p>
+
                 <p className="flex items-center gap-2 font-bold text-lg">
                   <EmailIcon sx={{ color: "white" }} />
-                  CPCMNLWINDOW@GMAIL.COM
+                  <a
+                    href="mailto:CPCMNLWINDOW@GMAIL.COM"
+                    className="hover:underline"
+                  >
+                    CPCMNLWINDOW@GMAIL.COM
+                  </a>
                 </p>
               </div>
             </div>

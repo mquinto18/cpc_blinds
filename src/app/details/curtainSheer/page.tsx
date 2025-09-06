@@ -71,7 +71,7 @@ export default function CombiDetailsModal() {
         images: ["/fabric-sheer/premium-blackout/vesper/vesperCOLOR.jpeg"],
       },
     ],
-    "Soft-Blackout Curtain": [
+    "Soft-Blackout-Curtain": [
       {
         image: "/fabric-sheer/Semi-Blackout/APHRODITE/aprhoditeIMG.jpeg",
         name: "Soft Blackout - Aphrodite",
@@ -228,7 +228,7 @@ export default function CombiDetailsModal() {
           <div className="flex flex-col gap-4 mt-8">
             <span className="bg-black h-[12px] w-[150px] rounded-full "></span>
             <span className="text-black text-base md:text-2xl lg:text-4xl leading-7 md:leading-14">
-              Fabric curtain & Sheer
+              Fabric Curtain & Sheer
             </span>
           </div>
         </Typography>
@@ -240,15 +240,15 @@ export default function CombiDetailsModal() {
             labelId="blind-type-label"
             value={blindType}
             label="Choose Blind Type"
-            onChange={(e) => setBlindType(e.target.value)}
+            onChange={(e) => handleBlindChange(e.target.value)}
           >
             <MenuItem value="Premium-Blackout-Curtain">
-              Premium-Blackout-Curtain
+              Premium-Blackout Curtain
             </MenuItem>
-            <MenuItem value="Soft-Blackout Curtain">
+            <MenuItem value="Soft-Blackout-Curtain">
               Soft-Blackout Curtain
             </MenuItem>
-            <MenuItem value="Sheer-Only">Sheer-Only</MenuItem>
+            <MenuItem value="Sheer-Only">Sheer Only</MenuItem>
           </Select>
         </FormControl>
 

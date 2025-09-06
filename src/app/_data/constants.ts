@@ -124,7 +124,7 @@ export const CPCproducts = [
 export const CPCImages = [
   {
     productName: "Korean COMBI Blinds",
-    image: "/6.jpg",
+    image: "/blinds2.jpg",
   },
   {
     productName: "Roller Blinds Sunscreen",
@@ -132,15 +132,15 @@ export const CPCImages = [
   },
   {
     productName: "Fabric curtains & sheer",
-    image: "/curtains1.jpg",
+    image: "/curtains3.jpg",
   },
   {
     productName: "Venetian Blinds",
-    image: "/VEN4.jpg",
+    image: "/venetian4.jpg",
   },
   {
     productName: "Vertical Blind",
-    image: "Vertical-BlindsPVC2.jpg",
+    image: "vertical2.jpg",
   },
   {
     productName: "Wooden Blind",
@@ -148,7 +148,7 @@ export const CPCImages = [
   },
   {
     productName: "Accordion/Folding Doors",
-    image: "accordion2.png",
+    image: "accordion4.jpg",
   },
 ];
 
@@ -157,13 +157,13 @@ export const combiBlinds = [
     image: "/koreanMain.mp4",
   },
   {
-    image: "/3.jpg",
+    image: "/blinds1.jpg",
   },
   {
-    image: "/4.jpg",
+    image: "/blinds2.jpg",
   },
   {
-    image: "/5.jpg",
+    image: "/blinds3.jpg",
   },
   {
     image: "/6.jpg",
@@ -195,6 +195,9 @@ export const curtainsBlindsImg = [
     image: "/curtains1.jpg",
   },
   {
+    image: "/curtains2.jpg",
+  },
+  {
     image: "/curtains3.jpg",
   },
   {
@@ -207,16 +210,16 @@ export const venetianBlindsImg = [
     image: "/venetianMain.mp4",
   },
   {
-    image: "/VEN2.jpg",
+    image: "/venetian1.jpg",
   },
   {
-    image: "/VEN3.jpg",
+    image: "/venetian2.jpg",
   },
   {
-    image: "/VEN4.jpg",
+    image: "/venetian3.jpg",
   },
   {
-    image: "/VEN5.jpg",
+    image: "/venetian4.jpg",
   },
 ];
 
@@ -225,16 +228,22 @@ export const verticalBlindsImg = [
     image: "/verticalMain.mp4",
   },
   {
-    image: "/Vertical-Blinds(pvc).jpg",
+    image: "/vertical1.jpg",
   },
   {
-    image: "/Vertical-Blinds(fabric).jpg",
+    image: "/vertical2.jpg",
   },
   {
-    image: "/Vertical-Fabric(fabric2).jpg",
+    image: "/vertical3.jpg",
+  },
+  {
+    image: "/vertical4.jpg",
   },
 ];
 export const woodenBlindsImg = [
+  {
+    image: "/woodenMain.mp4",
+  },
   {
     image: "/wooden1.jpg",
   },
@@ -260,6 +269,9 @@ export const accordionBlindsImg = [
   },
   {
     image: "/accordion1.jpg",
+  },
+  {
+    image: "/accordion4.jpg",
   },
 ];
 

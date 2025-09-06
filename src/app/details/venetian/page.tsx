@@ -31,17 +31,17 @@ export default function CombiDetailsModal() {
   > = {
     "Natural-Venetian-Blinds": [
       {
-        image: "/venetian/venIMG.jpg",
+        image: "/venetian/venitianIMG.jpg",
         name: "Natural Venetian Blinds - Plain",
         images: ["/venetian/PLAIN.jpg"],
       },
       {
-        image: "/venetian/venIMG.jpg",
+        image: "/venetian/venitianIMG.jpg",
         name: "Natural Venetian Blinds - Metallic",
         images: ["/venetian/METALLIC.jpg"],
       },
       {
-        image: "/venetian/venIMG.jpg",
+        image: "/venetian/venitianIMG.jpg",
         name: "Natural Venetian Blinds - Perforated",
         images: ["/venetian/PERFORATED.jpg"],
       },

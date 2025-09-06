@@ -32,7 +32,7 @@ export default function CombiDetailsModal() {
     "FABRIC-Vertical-Blinds": [
       {
         image: "/vertical/fabric/verticalImage.jpg",
-        name: "Fabric Vertical Blinds - PVC Wood",
+        name: "PVC Vertical Blinds",
         images: [
           "/vertical/fabric/v3.jpg",
           "/vertical/fabric/v9.jpg",
@@ -43,9 +43,13 @@ export default function CombiDetailsModal() {
     ],
     "PVC-Vertical-Blinds": [
       {
-        image: "/Vertical-BlindsPVC2.jpg",
-        name: "Fabric Vertical Blinds - PVC Wood",
-        images: ["/vertical/pvc-wood/woodcode.jpg"],
+        image: "/vertical/pvc-wood/PVCblindsIMG.jpg",
+        name: "PVC Vertical Blinds",
+        images: [
+          "/vertical/pvc-wood/woodcode.jpg",
+          "/vertical/pvc-wood/pvcCOLOR.png",
+          "/vertical/pvc-wood/pvcCOLOR1.png",
+        ],
       },
     ],
   };

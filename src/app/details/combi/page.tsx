@@ -208,10 +208,10 @@ export default function CombiDetailsModal() {
             onChange={(e) => handleBlindChange(e.target.value)}
           >
             <MenuItem value="premium-blackout">
-              Premium Blackout Blinds (Our best seller)
+              Premium-Blackout Blinds (Our best seller)
             </MenuItem>
             <MenuItem value="semi-blackout">Semi-Blackout Blinds</MenuItem>
-            <MenuItem value="natural-basic">Natural Basic Blinds</MenuItem>
+            <MenuItem value="natural-basic">Natural-Basic Blinds</MenuItem>
           </Select>
         </FormControl>
 
