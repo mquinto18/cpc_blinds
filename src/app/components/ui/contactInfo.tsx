@@ -14,9 +14,14 @@ import {
   CircularProgress, // 👈 added
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
+import { Allura } from "next/font/google";
 import PhoneIcon from "@mui/icons-material/Phone";
 import AOS from "aos";
 
+const allura = Allura({
+  subsets: ["latin"], // Add other subsets if needed
+  weight: "400", // Allura has only one weight
+});
 export default function ContactInfo() {
   const [open, setOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
@@ -118,11 +123,13 @@ export default function ContactInfo() {
             />
             <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
               <h2
-                className="text-3xl md:text-6xl font-bold mb-4 leading-snug"
+                className={`text-5xl md:text-8xl font-bold mb-4 leading-snug ${allura.className}`}
                 data-aos="fade-up"
               >
-                GET YOUR FREE <br /> QUOTATION NOW.
+                Get your free <br />
+                quotation now.
               </h2>
+
               <div>
                 <p className="flex items-center font-bold gap-2 text-lg mb-2">
                   <PhoneIcon />

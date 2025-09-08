@@ -7,7 +7,11 @@ import { Box } from "@mui/material";
 import ContactInfo from "../components/ui/contactInfo";
 import { useRouter } from "next/navigation";
 import Footer from "../components/ui/Footer";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 import AOS from "aos";
 import {
   CPCproducts,
@@ -149,8 +153,7 @@ export default function Home() {
           muted
         />
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full gap-6">
-          <span
-            key={index} // important! forces React to re-render and apply animation
+          <span // important! forces React to re-render and apply animation
             className="fade-pop text-white text-2xl md:text-4xl lg:text-[50px] text-center leading-10 md:leading-[60px] font-bold"
           >
             Transform Your Windows. <br /> Transform Your Home.
@@ -166,7 +169,7 @@ export default function Home() {
             {headerTitle[index].subheadline}
           </p>
 
-          <Button
+          {/* <Button
             variant="contained"
             color="primary"
             sx={{
@@ -182,7 +185,7 @@ export default function Home() {
             }}
             className="explore-btn"
           >
-            {/* <span style={{ marginRight: 8, fontSize: "inherit" }}>Explore</span> */}
+            <span style={{ marginRight: 8, fontSize: "inherit" }}>Explore</span>
             <span
               className="arrow-circle"
               style={{
@@ -197,7 +200,7 @@ export default function Home() {
             >
               <ArrowForwardIcon style={{ color: "#967F5D" }} />
             </span>
-          </Button>
+          </Button> */}
         </div>
       </div>
 
@@ -329,7 +332,7 @@ export default function Home() {
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               {/* Left main image */}
               <div className="w-full md:w-auto">
@@ -364,7 +367,7 @@ export default function Home() {
             {/* Korean Combi Blinds */}
             <div
               className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-left"
+              data-aos="fade-up"
             >
               {combiBlindsDetails.map((item, index) => {
                 if (item.type === "header") {
@@ -437,7 +440,7 @@ export default function Home() {
             {/* Text & Details Section */}
             <div
               className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               {RollerBlinds.map((item, index) => {
                 if (item.type === "header") {
@@ -507,7 +510,7 @@ export default function Home() {
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-left"
+              data-aos="fade-up"
             >
               {/* Left stacked images (hidden on mobile) */}
               <div
@@ -545,7 +548,7 @@ export default function Home() {
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               {/* Left main video */}
               <div className="w-full md:w-auto">
@@ -580,7 +583,7 @@ export default function Home() {
             {/* Korean Combi Blinds */}
             <div
               className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-left"
+              data-aos="fade-up"
             >
               {FabriccurtainSheer.map((item, index) => {
                 if (item.type === "header") {
@@ -652,7 +655,7 @@ export default function Home() {
             {/* Text & Details Section */}
             <div
               className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               {VenetianBlinds.map((item, index) => {
                 if (item.type === "header") {
@@ -722,7 +725,7 @@ export default function Home() {
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-left"
+              data-aos="fade-up"
             >
               {/* Left stacked images */}
               <div
@@ -760,7 +763,7 @@ export default function Home() {
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               {/* Left main image */}
               <div className="w-full md:w-auto">
@@ -795,7 +798,7 @@ export default function Home() {
             {/* Korean Combi Blinds */}
             <div
               className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-left"
+              data-aos="fade-up"
             >
               {VerticalBlinds.map((item, index) => {
                 if (item.type === "header") {
@@ -868,7 +871,7 @@ export default function Home() {
             {/* Text & Details Section */}
             <div
               className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               {WoodenBlinds.map((item, index) => {
                 if (item.type === "header") {
@@ -938,7 +941,7 @@ export default function Home() {
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-left"
+              data-aos="fade-up"
             >
               {/* Left stacked images */}
               <div
@@ -976,7 +979,7 @@ export default function Home() {
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               {/* Left main image */}
               <div className="w-full md:w-auto">
@@ -1011,7 +1014,7 @@ export default function Home() {
             {/* Korean Combi Blinds */}
             <div
               className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-left"
+              data-aos="fade-up"
             >
               {AccordionFoldingDoors.map((item, index) => {
                 if (item.type === "header") {
@@ -1130,12 +1133,40 @@ export default function Home() {
                     key={index}
                     className="flex-shrink-0 w-[80%] xs:w-[70%] sm:w-[48%] md:w-[30%] lg:w-[23%] snap-start bg-white rounded-xl shadow-md p-3"
                   >
-                    {/* Image */}
+                    {/* Header (avatar + name + time) */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <AccountCircleIcon
+                        sx={{ fontSize: 40, color: "#6b7280" }}
+                      />
+                      <div className="flex flex-col">
+                        <span className="font-semibold text-gray-800 text-sm">
+                          {product.comments[0]?.name}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          {product.comments[0]?.time}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Product Image */}
                     <img
                       src={product.image}
                       alt={`Recent Product ${index + 1}`}
                       className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover rounded-lg"
                     />
+
+                    {/* Like/Comment/Share Buttons */}
+                    <div className="flex justify-around text-gray-600 text-sm font-medium mt-2 border-y border-gray-200 py-2">
+                      <button className="flex items-center gap-1 hover:text-blue-600">
+                        <ThumbUpOutlinedIcon /> Like
+                      </button>
+                      <button className="flex items-center gap-1 hover:text-blue-600">
+                        <ChatBubbleOutlineOutlinedIcon /> Comment
+                      </button>
+                      <button className="flex items-center gap-1 hover:text-blue-600">
+                        <ShareOutlinedIcon /> Share
+                      </button>
+                    </div>
 
                     {/* Comments - Horizontal scroll */}
                     <div className="mt-3 overflow-x-auto scrollbar-hide">
@@ -1147,8 +1178,6 @@ export default function Home() {
                           >
                             <div className="flex items-start gap-3">
                               {/* Avatar */}
-                              <AccountCircleIcon sx={{ fontSize: 48 }} />
-
                               <div className="flex flex-col">
                                 {/* Name + Time */}
                                 <div className="flex items-center gap-2">
