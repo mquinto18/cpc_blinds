@@ -32,17 +32,17 @@ export default function CombiDetailsModal() {
     "natural-accordion-door": [
       {
         image: "/accordion/FD/10.3cm/10.3cmimg.jpg",
-        name: "Natural Accordion Door - FD",
+        name: "Accordion Door - FD",
         images: ["/accordion/FD/10.3cm/10.3cmdet.jpg"],
       },
       {
         image: "/accordion/FD/12.5cm/12.5cm img.jpg",
-        name: "Natural Accordion Door - FD",
+        name: "Accordion Door - FD",
         images: ["/accordion/FD/12.5cm/12.5cm det.jpg"],
       },
       {
         image: "/accordion/FRENCH/french img.jpg",
-        name: "Natural Accordion Door - French",
+        name: "Accordion Door - French",
         images: ["/accordion/FRENCH/french det.jpg"],
       },
     ],
@@ -116,9 +116,7 @@ export default function CombiDetailsModal() {
             label="Choose Blind Type"
             onChange={(e) => setBlindType(e.target.value)}
           >
-            <MenuItem value="natural-accordion-door">
-              Natural-Accordion Door
-            </MenuItem>
+            <MenuItem value="natural-accordion-door">Accordion Door</MenuItem>
           </Select>
         </FormControl>
 

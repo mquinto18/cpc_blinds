@@ -32,17 +32,17 @@ export default function CombiDetailsModal() {
     "Natural-Venetian-Blinds": [
       {
         image: "/venetian/venitianIMG.jpg",
-        name: "Natural Venetian Blinds - Plain",
+        name: "Premium Venetian Blinds - Plain",
         images: ["/venetian/PLAIN.jpg"],
       },
       {
         image: "/venetian/venitianIMG.jpg",
-        name: "Natural Venetian Blinds - Metallic",
+        name: "Premium Venetian Blinds - Metallic",
         images: ["/venetian/METALLIC.jpg"],
       },
       {
         image: "/venetian/venitianIMG.jpg",
-        name: "Natural Venetian Blinds - Perforated",
+        name: "Premium Venetian Blinds - Perforated",
         images: ["/venetian/PERFORATED.jpg"],
       },
     ],
@@ -117,7 +117,7 @@ export default function CombiDetailsModal() {
             onChange={(e) => setBlindType(e.target.value)}
           >
             <MenuItem value="Natural-Venetian-Blinds">
-              Natural Venetian Blinds
+              Premium Venetian Blinds
             </MenuItem>
           </Select>
         </FormControl>

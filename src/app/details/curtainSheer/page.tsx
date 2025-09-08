@@ -248,7 +248,7 @@ export default function CombiDetailsModal() {
             <MenuItem value="Soft-Blackout-Curtain">
               Soft-Blackout Curtain
             </MenuItem>
-            <MenuItem value="Sheer-Only">Sheer Only</MenuItem>
+            <MenuItem value="Sheer-Only">Sheer Curtain</MenuItem>
           </Select>
         </FormControl>
 

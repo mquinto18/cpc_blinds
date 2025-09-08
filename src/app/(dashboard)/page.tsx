@@ -182,7 +182,7 @@ export default function Home() {
             }}
             className="explore-btn"
           >
-            <span style={{ marginRight: 8, fontSize: "inherit" }}>Explore</span>
+            {/* <span style={{ marginRight: 8, fontSize: "inherit" }}>Explore</span> */}
             <span
               className="arrow-circle"
               style={{

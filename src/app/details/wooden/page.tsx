@@ -31,17 +31,17 @@ export default function CombiDetailsModal() {
   > = {
     "Wooden-Blinds": [
       {
-        image: "/wooden/basswood/BasswoodIMG.jpg",
+        image: "/wooden/basswood/woodenIMG3.jpg",
         name: "Wooden Blinds - Basswood Realwood",
         images: ["/wooden/basswood/basswoodColor.png"],
       },
       {
-        image: "/wooden/fauxwood/fauxwood.jpg",
-        name: "Wooden Blinds - Fauxwood PVC",
+        image: "/wooden/fauxwood/woodenIMG.jpg",
+        name: "Wooden Blinds - Fauxwood PVC ",
         images: ["/wooden/fauxwood/fauxColor.png"],
       },
       {
-        image: "/wooden/paulonian/paulowina.jpeg",
+        image: "/wooden/paulonian/woodenIMG1.jpg",
         name: "Wooden Blinds - Paulownia Realwood",
         images: ["/wooden/paulonian/paulColor.png"],
       },
