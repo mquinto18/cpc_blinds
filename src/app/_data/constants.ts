@@ -372,7 +372,7 @@ export const verticalBlindsImg = [
 ];
 export const woodenBlindsImg = [
   {
-    image: "/woodenMain.mp4",
+    image: "/woodenIMG.mp4",
   },
   {
     image: "/wooden1.jpg",

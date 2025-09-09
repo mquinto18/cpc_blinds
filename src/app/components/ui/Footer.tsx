@@ -58,7 +58,7 @@ export default function Footer() {
         {/* Left Section - Logo + Quote */}
         <div className="flex-1 text-center md:text-left">
           <Image
-            src="/mainlogo.png" // 👈 replace with your logo
+            src="/mainlogo.png"
             alt="Logo"
             width={120}
             height={120}
