@@ -261,7 +261,7 @@ export const CPCImages = [
     image: "/roller2.jpeg",
   },
   {
-    productName: "Fabric curtains & sheer",
+    productName: "Fabric curtains and sheer",
     image: "/curtains3.jpg",
   },
   {
@@ -277,7 +277,7 @@ export const CPCImages = [
     image: "wooden2.jpg",
   },
   {
-    productName: "Accordion/Folding Doors",
+    productName: "Accordion Folding Doors",
     image: "accordion4.jpg",
   },
 ];

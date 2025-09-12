@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import {
   Box,
@@ -14,14 +14,8 @@ import {
   CircularProgress, // 👈 added
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
-import { Allura } from "next/font/google";
 import PhoneIcon from "@mui/icons-material/Phone";
-import AOS from "aos";
 
-const allura = Allura({
-  subsets: ["latin"], // Add other subsets if needed
-  weight: "400", // Allura has only one weight
-});
 export default function ContactInfo() {
   const [open, setOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
@@ -31,16 +25,14 @@ export default function ContactInfo() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
-  useEffect(() => {
-    AOS.init({
-      duration: 800, // animation duration in ms
-      once: true, // only animate once
-    });
-  }, []);
-
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ""); // remove non-digits
+    setFormData({ ...formData, phone: value });
+  };
   // Controlled state for FAQ dropdown
   const [selectedFaq, setSelectedFaq] = useState("");
 
@@ -90,7 +82,7 @@ export default function ContactInfo() {
 
       if (data.success) {
         setOpen(true);
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
         setSelectedFaq(""); // reset FAQ
       } else {
         setErrorOpen(true);
@@ -108,10 +100,7 @@ export default function ContactInfo() {
   return (
     <>
       <div className="mx-5 mt-10 rounded-2xl shadow-[0_0_10px_rgba(0,0,0,0.1)] overflow-hidden">
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1980px] mx-auto"
-          data-aos="fade-up"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1980px] mx-auto">
           {/* LEFT: Image with text overlay */}
           <div className="relative h-[400px] md:h-auto">
             <Image
@@ -122,30 +111,16 @@ export default function ContactInfo() {
               priority
             />
             <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
-              <h2
-                className={`text-5xl md:text-8xl font-bold mb-4 leading-snug ${allura.className}`}
-                data-aos="fade-up"
-              >
-                Get your free <br />
-                quotation now.
+              <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-snug ">
+                GET YOUR FREE <br /> QUOTATION NOW.
               </h2>
-
               <div>
                 <p className="flex items-center font-bold gap-2 text-lg mb-2">
-                  <PhoneIcon />
-                  <a href="tel:+639164180061" className="hover:underline">
-                    +639164180061
-                  </a>
+                  <PhoneIcon /> +639164180061
                 </p>
-
                 <p className="flex items-center gap-2 font-bold text-lg">
                   <EmailIcon sx={{ color: "white" }} />
-                  <a
-                    href="mailto:CPCMNLWINDOW@GMAIL.COM"
-                    className="hover:underline"
-                  >
-                    CPCMNLWINDOW@GMAIL.COM
-                  </a>
+                  CPCMNLWINDOW@GMAIL.COM
                 </p>
               </div>
             </div>
@@ -162,11 +137,11 @@ export default function ContactInfo() {
           >
             <Box mb={3}>
               <Image
-                src="/mainlogo.png"
+                src="/mainLogo.png"
                 alt="Logo"
                 width={120}
                 height={120}
-                className="object-contain mx-auto md:mx-0"
+                className="mx-auto"
               />
             </Box>
 
@@ -202,6 +177,16 @@ export default function ContactInfo() {
                     type="email"
                     fullWidth
                     required
+                  />
+
+                  <TextField
+                    label="Phone Number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    fullWidth
+                    required
+                    inputProps={{ inputMode: "numeric" }}
                   />
 
                   {/* FAQ Dropdown */}

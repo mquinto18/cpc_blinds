@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, message } = body;
+    const { name, email, phone, message } = body;
 
     // ✅ Nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       text: `
         Name: ${name}
         Email: ${email}
-
+        Phone: ${phone}
         Message:
         ${message}
       `,
@@ -31,6 +31,7 @@ export async function POST(req: Request) {
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Message:</strong> ${message}</p>
         <p
       `,

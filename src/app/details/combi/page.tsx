@@ -17,6 +17,50 @@ export default function CombiDetailsModal() {
   const [blindType, setBlindType] = useState("premium-blackout");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [variantIndex, setVariantIndex] = useState(0); // 👈 track variant slideshow
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+
+  const minSwipeDistance = 50;
+
+  // --- For Main Blinds ---
+  const onMainTouchStart = (e: React.TouchEvent) => {
+    setTouchEndX(0);
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const onMainTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const onMainTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > minSwipeDistance) {
+      handleNext(); // swipe left
+    } else if (distance < -minSwipeDistance) {
+      handlePrev(); // swipe right
+    }
+  };
+
+  // --- For Variants ---
+  const onVariantTouchStart = (e: React.TouchEvent) => {
+    setTouchEndX(0);
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const onVariantTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const onVariantTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > minSwipeDistance) {
+      handleNextVariant();
+    } else if (distance < -minSwipeDistance) {
+      handlePrevVariant();
+    }
+  };
   const router = useRouter();
 
   const handleClose = () => {
@@ -256,6 +300,9 @@ export default function CombiDetailsModal() {
                 borderRadius: 2,
                 objectFit: "cover", // keep cover for main image
               }}
+              onTouchStart={onMainTouchStart}
+              onTouchMove={onMainTouchMove}
+              onTouchEnd={onMainTouchEnd}
             />
 
             <Box sx={{ mt: 2, display: "flex", gap: 2 }}>
@@ -308,6 +355,9 @@ export default function CombiDetailsModal() {
                 alignItems: "center",
                 justifyContent: "center",
               }}
+              onTouchStart={onVariantTouchStart}
+              onTouchMove={onVariantTouchMove}
+              onTouchEnd={onVariantTouchEnd}
             >
               <Box
                 component="img"

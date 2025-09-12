@@ -265,9 +265,17 @@ export default function Home() {
         {CPCImages.map((item, index) => (
           <div
             key={index}
+            onClick={() => {
+              const sectionId = item.productName
+                .toLowerCase()
+                .replace(/\s+/g, "-");
+              document
+                .getElementById(sectionId)
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="relative flex cursor-pointer flex-col items-center 
-                 min-w-[200px] w-[300px] h-[600px] group overflow-hidden 
-                 rounded-[20px] shadow-md transition-all duration-700 ease-in-out"
+            min-w-[200px] w-[300px] h-[600px] group overflow-hidden 
+            rounded-[20px] shadow-md transition-all duration-700 ease-in-out"
           >
             {/* Image */}
             <img
@@ -328,7 +336,10 @@ export default function Home() {
 
         <div className="flex flex-col gap-10">
           {/* kOREAN COMBI BLINDS */}
-          <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
+          <div
+            className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="korean-combi-blinds"
+          >
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
@@ -436,7 +447,10 @@ export default function Home() {
           </div>
 
           {/* ROLLER BLINDS */}
-          <div className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
+          <div
+            className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="roller-blinds-sunscreen"
+          >
             {/* Text & Details Section */}
             <div
               className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
@@ -544,7 +558,10 @@ export default function Home() {
           </div>
 
           {/* Fabric curtain & Sheer */}
-          <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
+          <div
+            className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="fabric-curtains-and-sheer"
+          >
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
@@ -651,7 +668,10 @@ export default function Home() {
           </div>
 
           {/* Venetian Blinds */}
-          <div className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
+          <div
+            className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="venetian-blinds"
+          >
             {/* Text & Details Section */}
             <div
               className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
@@ -759,7 +779,10 @@ export default function Home() {
           </div>
 
           {/* Vertical Blinds*/}
-          <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
+          <div
+            className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="vertical-blind"
+          >
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
@@ -867,7 +890,10 @@ export default function Home() {
           </div>
 
           {/* Wooden Blinds */}
-          <div className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
+          <div
+            className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="wooden-blind"
+          >
             {/* Text & Details Section */}
             <div
               className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
@@ -975,7 +1001,10 @@ export default function Home() {
           </div>
 
           {/* Accordion Blinds*/}
-          <div className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8">
+          <div
+            className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="accordion-folding-doors"
+          >
             {/* Images Section */}
             <div
               className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
