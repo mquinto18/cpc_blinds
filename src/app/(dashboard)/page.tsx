@@ -35,6 +35,8 @@ import {
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { Typography } from "@mui/material";
 import Navbar from "@/app/components/ui/Navbar";
+import AboutUs from "../components/ui/aboutUs";
+import AboutCpcMnl from "../components/ui/aboutUs";
 
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -1271,6 +1273,7 @@ export default function Home() {
         </p>
       </div>
       <ContactInfo />
+      <AboutCpcMnl />
       <Footer />
     </>
   );

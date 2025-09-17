@@ -468,7 +468,7 @@ export const RollerBlinds = [
 export const FabriccurtainSheer = [
   {
     type: "header",
-    header: "Fabric curtain & Sheer",
+    header: "Fabric Curtain & Sheer",
     description:
       "Fabric Curtains and Sheers bring elegance and versatility to any room, combining style, comfort, and functionality. Whether you want to create a cozy atmosphere or let in natural light with a soft touch, they’re the perfect choice for every home.",
   },

@@ -14,13 +14,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
 export default function Navbar() {
   const [active, setActive] = useState("Home");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const menuItems = ["Home", "Products", "Contacts"];
+  // ✅ Added "About Us"
+  const menuItems = ["Home", "About Us", "Products", "Contacts"];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -38,12 +38,19 @@ export default function Navbar() {
     setDrawerOpen(!drawerOpen);
   };
 
-  // ✅ Reusable scroll handler for both desktop + mobile
+  // ✅ Reusable scroll handler for all sections
   const handleScrollTo = (item: string) => {
     setActive(item);
 
     if (item === "Home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    if (item === "About Us") {
+      const section = document.getElementById("about");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
 
     if (item === "Products") {
@@ -60,7 +67,6 @@ export default function Navbar() {
       }
     }
 
-    // 👇 Close drawer after click in mobile
     if (isMobile) {
       setDrawerOpen(false);
     }
@@ -81,7 +87,7 @@ export default function Navbar() {
         {menuItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton
-              onClick={() => handleScrollTo(item)} // ✅ smooth scroll here
+              onClick={() => handleScrollTo(item)}
               sx={{
                 borderRadius: 2,
                 backgroundColor: active === item ? "white" : "transparent",
@@ -165,7 +171,7 @@ export default function Navbar() {
               {menuItems.map((item) => (
                 <Button
                   key={item}
-                  onClick={() => handleScrollTo(item)} // ✅ smooth scroll here too
+                  onClick={() => handleScrollTo(item)}
                   sx={{
                     textTransform: "none",
                     fontSize: "16px",

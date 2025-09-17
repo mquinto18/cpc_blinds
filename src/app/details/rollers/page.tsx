@@ -120,19 +120,31 @@ export default function CombiDetailsModal() {
     ],
     "Roller-Blinds-Semi-Blackout": [
       {
-        image: "/rollers/PIONEERSUNSCREEN/suncreenIMG.jpg",
+        image: "/rollers/SEMIBLACKOUT/semiblackoutIMG.png",
         name: "Roller Blinds - Semi Blackout",
-        images: [
-          "/rollers/SEMIBLACKOUT/semiblackoutRoller.png",
-          "/rollers/SEMIBLACKOUT/semiblackoutRoller1.png",
-        ],
+        images: ["/rollers/SEMIBLACKOUT/semiblackoutColor.png"],
+      },
+      {
+        image: "/rollers/SEMIBLACKOUT/semiblackoutIMG1.png",
+        name: "Roller Blinds - Semi Blackout",
+        images: ["/rollers/SEMIBLACKOUT/semiblackoutColor1.png"],
       },
     ],
     "Roller-Blinds-Sunscreen": [
       {
-        image: "/rollers/PIONEERSUNSCREEN/rolllerSuncreenIMG.jpg",
+        image: "/rollers/PIONEERSUNSCREEN/sunscreenIMG.png",
         name: "Roller Blinds - Sunscreen",
-        images: ["/rollers/PIONEERSUNSCREEN/sunscreenColoro.png"],
+        images: ["/rollers/PIONEERSUNSCREEN/sunscreenColor.png"],
+      },
+      {
+        image: "/rollers/PIONEERSUNSCREEN/sunscreenIMG1.png",
+        name: "Roller Blinds - Sunscreen",
+        images: ["/rollers/PIONEERSUNSCREEN/sunscreenColor1.png"],
+      },
+      {
+        image: "/rollers/PIONEERSUNSCREEN/sunscreenIMG2.png",
+        name: "Roller Blinds - Sunscreen",
+        images: ["/rollers/PIONEERSUNSCREEN/sunscreenColor2.png"],
       },
     ],
   };
