@@ -362,7 +362,7 @@ export default function Home() {
 
               {/* Right stacked images (hidden on mobile) */}
               <div
-                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/combi")}
               >
                 {combiBlinds.slice(1).map((item, index) => (
@@ -530,7 +530,7 @@ export default function Home() {
             >
               {/* Left stacked images (hidden on mobile) */}
               <div
-                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/rollers")}
               >
                 {rollerBlindsImg.slice(1).map((item, index) => (
@@ -584,7 +584,7 @@ export default function Home() {
 
               {/* Right stacked images (hidden on mobile) */}
               <div
-                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/curtainSheer")}
               >
                 {curtainsBlindsImg.slice(1).map((item, index) => (
@@ -751,7 +751,7 @@ export default function Home() {
             >
               {/* Left stacked images */}
               <div
-                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/venetian")}
               >
                 {venetianBlindsImg.slice(1).map((item, index) => (
@@ -805,7 +805,7 @@ export default function Home() {
 
               {/* Right stacked images */}
               <div
-                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/vertical")}
               >
                 {verticalBlindsImg.slice(1).map((item, index) => (
@@ -973,7 +973,7 @@ export default function Home() {
             >
               {/* Left stacked images */}
               <div
-                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/wooden")}
               >
                 {woodenBlindsImg.slice(1).map((item, index) => (
@@ -1014,20 +1014,17 @@ export default function Home() {
             >
               {/* Left main image */}
               <div className="w-full md:w-auto">
-                <video
-                  src={accordionBlindsImg[0].image} // <-- replace with your video field
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                <img
+                  src={accordionBlindsImg[0].image} // <-- replace with your image field
+                  alt="Accordion Blind"
+                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg cursor-pointer"
                   onClick={() => router.push("/details/accordion")}
                 />
               </div>
 
               {/* Right stacked images */}
               <div
-                className="hidden md:flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/accordion")}
               >
                 {accordionBlindsImg.slice(1).map((item, index) => (
