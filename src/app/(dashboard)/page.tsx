@@ -126,7 +126,7 @@ export default function Home() {
     {
       headline: "Redefine Your Windows. Redefine Your Living",
       subheadline:
-        "Elevating Filipino homes since 20XX. Get your Custom Blinds consultation now and experience the CPC MNL difference.",
+        "Elevating Filipino homes since 2022. Get your Custom Blinds consultation now and experience the CPC MNL difference.",
     },
     {
       headline: "Your Home, Elevated",

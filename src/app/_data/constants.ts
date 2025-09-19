@@ -296,7 +296,7 @@ export const combiBlinds = [
     image: "/blinds3.jpg",
   },
   {
-    image: "/6.jpg",
+    image: "/kombi7.jpg",
   },
 ];
 export const rollerBlindsImg = [
@@ -378,13 +378,13 @@ export const woodenBlindsImg = [
     image: "/wooden1.jpg",
   },
   {
-    image: "/wooden2.jpg",
+    image: "/wooden7.jpg",
   },
   {
-    image: "/wooden3.jpg",
+    image: "/wooden9.jpg",
   },
   {
-    image: "/wooden4.jpg",
+    image: "/wooden8.jpg",
   },
 ];
 export const accordionBlindsImg = [
@@ -395,13 +395,13 @@ export const accordionBlindsImg = [
     image: "/accordion2.png",
   },
   {
-    image: "/accordion.jpg",
+    image: "/accordion9.jpg",
   },
   {
-    image: "/accordion1.jpg",
+    image: "/accordion8.jpg",
   },
   {
-    image: "/accordion4.jpg",
+    image: "/accordion7.jpg",
   },
 ];
 

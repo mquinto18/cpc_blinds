@@ -23,7 +23,7 @@ export default function Footer() {
       "",
     ],
     [
-      "Elevating Filipino homes since 20XX.",
+      "Elevating Filipino homes since 2022.",
       "Get your Custom Blinds consultation now",
       "and experience the CPC MNL difference.",
       "",
