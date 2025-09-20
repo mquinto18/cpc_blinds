@@ -153,7 +153,7 @@ export default function CombiDetailsModal() {
       {
         image: "/koreanCombi/blackout/PICASSO/PicassoIMG.png",
         name: "Premium Blackout - Picasso",
-        images: ["/koreanCombi/blackout/PICASSO/PicassoCOLOR.png"],
+        images: ["/koreanCombi/blackout/PICASSO/PicassoColor.png"],
       },
       {
         image: "/koreanCombi/blackout/MAJESTY/majestyIMG.png",
