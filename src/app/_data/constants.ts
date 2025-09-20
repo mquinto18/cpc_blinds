@@ -4,240 +4,61 @@ import HorizontalSplitIcon from "@mui/icons-material/HorizontalSplit";
 
 export const recentProducts = [
   {
-    image: "/recent1.jpeg",
-    comments: [
-      {
-        name: "Sophia Martinez",
-        avatar: "/avatar1.png",
-        time: "2d ago",
-        feedback:
-          "Ang ganda ng blinds! Ang linis ng itsura, parang hotel vibes.",
-      },
-      {
-        name: "Mark Santos",
-        avatar: "/avatar7.png",
-        time: "1d ago",
-        feedback:
-          "Madali lang ikabit, hindi hassle. Sakto sukat sa bintana ko.",
-      },
-    ],
+    image: "/feedback1.png",
   },
   {
-    image: "/recent2.jpeg",
-    comments: [
-      {
-        name: "James Carter",
-        avatar: "/avatar2.png",
-        time: "5d ago",
-        feedback:
-          "Matibay ang quality ng blinds. Saktong-sakto sa modern look ng bahay.",
-      },
-      {
-        name: "Ana Dela Cruz",
-        avatar: "/avatar8.png",
-        time: "4d ago",
-        feedback: "Mukhang premium kahit affordable lang. Ang ganda sa kwarto!",
-      },
-    ],
+    image: "/feedback2.png",
   },
   {
-    image: "/recent3.jpeg",
-    comments: [
-      {
-        name: "Emily Johnson",
-        avatar: "/avatar3.png",
-        time: "1w ago",
-        feedback:
-          "Super satisfied! Ang blinds ang nagdala ng ganda sa dining area.",
-      },
-      {
-        name: "Carlo Ramirez",
-        avatar: "/avatar9.png",
-        time: "6d ago",
-        feedback: "Mabilis dumating at maayos ang packaging. Walang gasgas!",
-      },
-    ],
+    image: "/feedback3.png",
   },
   {
-    image: "/recent4.jpeg",
-    comments: [
-      {
-        name: "Daniel Lee",
-        avatar: "/avatar4.png",
-        time: "2w ago",
-        feedback:
-          "Very smooth transaction. Ang ganda ng blinds sa office namin.",
-      },
-      {
-        name: "Liza Manalo",
-        avatar: "/avatar12.png",
-        time: "1w ago",
-        feedback:
-          "Responsive ang seller. Ang bilis ng delivery, sakto agad ang sukat.",
-      },
-    ],
+    image: "/feedback4.png",
   },
   {
-    image: "/recent5.jpg",
-    comments: [
-      {
-        name: "Olivia Brown",
-        avatar: "/avatar5.png",
-        time: "3w ago",
-        feedback:
-          "Fast shipping! Ang blinds naka-roll ng maayos, walang damage at easy i-install.",
-      },
-      {
-        name: "Patrick Gonzales",
-        avatar: "/avatar11.png",
-        time: "2w ago",
-        feedback:
-          "Ang linis ng cut at quality ng tela, bagay na bagay sa bahay.",
-      },
-    ],
+    image: "/feedback5.png",
   },
   {
-    image: "/recent6.jpg",
-    comments: [
-      {
-        name: "Michael Chen",
-        avatar: "/avatar6.png",
-        time: "1mo ago",
-        feedback:
-          "Mas maganda pa sa personal ang blinds kaysa sa pictures. Very classy!",
-      },
-      {
-        name: "Jennylyn Mercado",
-        avatar: "/avatar10.png",
-        time: "3w ago",
-        feedback:
-          "Ang tibay ng mechanism, smooth i-roll up at down. Sulit ang presyo!",
-      },
-    ],
+    image: "/feedback7.png",
   },
   {
-    image: "/recent7.jpg",
-    comments: [
-      {
-        name: "Robert Cruz",
-        avatar: "/avatar7.png",
-        time: "2mo ago",
-        feedback:
-          "Napakadaling i-setup ng blinds. Kumpleto na lahat sa package.",
-      },
-      {
-        name: "Mia Torres",
-        avatar: "/avatar8.png",
-        time: "7w ago",
-        feedback: "Ang ganda ng kulay, tumutugma sa interior ng sala ko.",
-      },
-    ],
+    image: "/feedback8.png",
   },
   {
-    image: "/recent8.jpg",
-    comments: [
-      {
-        name: "Chris Evans",
-        avatar: "/avatar9.png",
-        time: "2mo ago",
-        feedback: "Solid ang blinds na ito, matibay at hindi basta napupunit.",
-      },
-      {
-        name: "Bea Alonzo",
-        avatar: "/avatar10.png",
-        time: "8w ago",
-        feedback: "Napakaganda ng finish, parang custom-made para sa bahay ko.",
-      },
-    ],
+    image: "/feedback9.png",
   },
   {
-    image: "/recent9.jpg",
-    comments: [
-      {
-        name: "John Smith",
-        avatar: "/avatar11.png",
-        time: "3mo ago",
-        feedback:
-          "Nagustuhan ng buong pamilya. Ang ganda ng blinds sa living room.",
-      },
-      {
-        name: "Katrina Velasquez",
-        avatar: "/avatar12.png",
-        time: "2mo ago",
-        feedback: "Sulit na sulit, bagay sa minimalist theme ng bahay ko.",
-      },
-    ],
+    image: "/feedback10.png",
   },
   {
-    image: "/recent10.jpg",
-    comments: [
-      {
-        name: "David Kim",
-        avatar: "/avatar13.png",
-        time: "3mo ago",
-        feedback:
-          "Maayos ang transaction. Ang blinds nagbigay privacy at style.",
-      },
-      {
-        name: "Jessa Lim",
-        avatar: "/avatar14.png",
-        time: "3mo ago",
-        feedback: "Perfect fit sa window! Hindi na kailangan ipa-adjust.",
-      },
-    ],
+    image: "/fedback11.png",
   },
   {
-    image: "/recent11.jpg",
-    comments: [
-      {
-        name: "Peter Parker",
-        avatar: "/avatar15.png",
-        time: "4mo ago",
-        feedback: "Durable ang blinds. Ginagamit namin daily, smooth pa rin.",
-      },
-      {
-        name: "Andrea Gutierrez",
-        avatar: "/avatar16.png",
-        time: "4mo ago",
-        feedback: "Maganda ang tela at hindi basta kumukupas ang kulay.",
-      },
-    ],
+    image: "/feedback12.png",
   },
   {
-    image: "/recent12.jpg",
-    comments: [
-      {
-        name: "Tony Stark",
-        avatar: "/avatar17.png",
-        time: "5mo ago",
-        feedback: "Ang ganda ng blinds! Nagmukhang mas maluwag ang kwarto ko.",
-      },
-      {
-        name: "Catriona Gray",
-        avatar: "/avatar18.png",
-        time: "5mo ago",
-        feedback: "Parang high-end blinds kahit very affordable lang.",
-      },
-    ],
+    image: "/feedback13.png",
   },
   {
-    image: "/recent13.jpg",
-    comments: [
-      {
-        name: "Juan Dela Cruz",
-        avatar: "/avatar19.png",
-        time: "6mo ago",
-        feedback:
-          "Sulit ang blinds, ang ganda ng quality at sobrang linis tingnan.",
-      },
-      {
-        name: "Maria Lopez",
-        avatar: "/avatar20.png",
-        time: "6mo ago",
-        feedback:
-          "Ang dali niyang i-install at nagbigay premium look sa bahay namin.",
-      },
-    ],
+    image: "/feedback14.png",
+  },
+  {
+    image: "/feedback15.png",
+  },
+  {
+    image: "/feedback16.png",
+  },
+  {
+    image: "/feedback17.png",
+  },
+  {
+    image: "/feedback18.png",
+  },
+  {
+    image: "/feedback19.png",
+  },
+  {
+    image: "/feedback20.png",
   },
 ];
 

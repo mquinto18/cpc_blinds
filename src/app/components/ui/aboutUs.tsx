@@ -24,9 +24,30 @@ export default function AboutCpcMnl(): JSX.Element {
             variant="h3"
             className="font-bold text-3xl lg:text-4xl mb-4"
           >
-            <span className="bg-gradient-to-r from-[#ca8a04] to-[#facc15] bg-clip-text text-transparent font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-              CPC MNL Window Blinds
-            </span>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-4 items-center sm:items-end justify-center text-center sm:text-left">
+              {/* First Logo */}
+              <img
+                src="/cpc_logs.png"
+                alt="CPC MNL Window Blinds"
+                className="w-[140px] sm:w-[180px] md:w-[220px] lg:w-[100px] object-contain"
+              />
+
+              {/* Second Logo */}
+              <img
+                src="/mnl_logs.png"
+                alt="CPC MNL Window Blinds"
+                className="w-[120px] sm:w-[160px] md:w-[200px] lg:w-[150px] object-contain self-center sm:self-end"
+              />
+
+              {/* Title */}
+              <Typography
+                variant="h3"
+                className="!font-serif text-base sm:text-lg md:text-md lg:text-2xl font-semibold tracking-widest mt-2 sm:mt-0"
+              >
+                WINDOW BLINDS
+              </Typography>
+            </div>
+
             <Typography variant="subtitle1" className=" text-lg">
               Elegance, functionality, and comfort — transforming every window
               into a statement piece.

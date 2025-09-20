@@ -342,25 +342,25 @@ export default function Home() {
             className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
             id="korean-combi-blinds"
           >
-            {/* Images Section */}
+            {/* Desktop layout: Video + Images */}
             <div
-              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              className="hidden md:flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
               data-aos="fade-up"
             >
-              {/* Left main image */}
-              <div className="w-full md:w-auto">
+              {/* Left main video */}
+              <div className="md:w-auto">
                 <video
-                  src={combiBlinds[0].image} // <-- replace with your video field
+                  src={combiBlinds[0].image}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
                   onClick={() => router.push("/details/combi")}
                 />
               </div>
 
-              {/* Right stacked images (hidden on mobile) */}
+              {/* Right stacked images */}
               <div
                 className="flex flex-col gap-4 w-full md:w-1/4"
                 onClick={() => router.push("/details/combi")}
@@ -377,9 +377,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Korean Combi Blinds */}
+            {/* Desktop text + button */}
             <div
-              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              className="hidden md:flex w-full max-w-[550px] flex-col px-0 sm:px-2 md:px-4 mx-auto"
               data-aos="fade-up"
             >
               {combiBlindsDetails.map((item, index) => {
@@ -407,7 +407,6 @@ export default function Home() {
                       className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
                     >
                       <div className="flex items-center gap-2">
-                        {/* Only render icon if it exists */}
                         {IconComponent && <IconComponent fontSize="medium" />}
                         <h1 className="text-sm sm:text-base md:text-lg font-bold">
                           {item.title}
@@ -423,118 +422,96 @@ export default function Home() {
                 return null;
               })}
 
+              {/* Desktop button */}
               <Button
                 variant="contained"
                 color="primary"
                 sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.1rem" },
+                  fontSize: { md: "1.1rem" },
                   fontWeight: 600,
                   backgroundColor: "#967F5D",
                   textTransform: "none",
-                  display: "flex",
-                  alignItems: "center",
                   width: "100%",
                   maxWidth: 300,
-                  gap: 2,
-                  boxSizing: "border-box",
                   mt: 6,
                 }}
-                onClick={() => router.push("/details/combi")} // go to modal path
+                onClick={() => router.push("/details/combi")}
               >
-                <span style={{ marginRight: 8, fontSize: "inherit" }}>
-                  View More
-                </span>
+                View More
               </Button>
             </div>
-          </div>
 
-          {/* ROLLER BLINDS */}
-          <div
-            className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
-            id="roller-blinds-sunscreen"
-          >
-            {/* Text & Details Section */}
+            {/* Mobile layout: Text + Images side by side */}
             <div
-              className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+              className="flex md:hidden flex-row gap-4 w-full"
               data-aos="fade-up"
             >
-              {RollerBlinds.map((item, index) => {
-                if (item.type === "header") {
-                  return (
-                    <div key={index}>
-                      <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
-                        ABOUT
-                      </h1>
-                      <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
-                        {item.header}
-                      </h1>
-                      <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  );
-                }
-
-                if (item.type === "detail") {
-                  const IconComponent = item.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
-                    >
-                      <div className="flex items-center gap-2">
-                        {/* Only render icon if it exists */}
-                        {IconComponent && <IconComponent fontSize="medium" />}
-                        <h1 className="text-sm sm:text-base md:text-lg font-bold">
-                          {item.title}
+              {/* Text content */}
+              <div className="flex-1 flex flex-col">
+                {combiBlindsDetails.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm opacity-30">ABOUT</h1>
+                        <h1 className="text-lg sm:text-xl font-bold">
+                          {item.header}
                         </h1>
+                        <p className="text-gray-700 text-sm sm:text-base mt-2">
+                          {item.description}
+                        </p>
                       </div>
-                      <p className="text-gray-700 text-xs sm:text-sm md:text-base">
-                        {item.details}
-                      </p>
-                    </div>
-                  );
-                }
+                    );
+                  }
 
-                return null;
-              })}
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
 
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.1rem" },
-                  fontWeight: 600,
-                  backgroundColor: "#967F5D",
-                  textTransform: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  maxWidth: 300,
-                  gap: 2,
-                  boxSizing: "border-box",
-                  mt: 6,
-                }}
-                onClick={() => router.push("/details/rollers")} // go to modal path
-              >
-                <span style={{ marginRight: 8, fontSize: "inherit" }}>
+                  return null;
+                })}
+
+                {/* Mobile button (only here, under text) */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 200,
+                    mt: 4,
+                  }}
+                  onClick={() => router.push("/details/combi")}
+                >
                   View More
-                </span>
-              </Button>
-            </div>
+                </Button>
+              </div>
 
-            {/* Images Section */}
-            <div
-              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-up"
-            >
-              {/* Left stacked images (hidden on mobile) */}
+              {/* Images on the right */}
               <div
-                className="flex flex-col gap-4 w-full md:w-1/4"
-                onClick={() => router.push("/details/rollers")}
+                className="flex flex-col gap-4 w-[45%]"
+                onClick={() => router.push("/details/combi")}
               >
-                {rollerBlindsImg.slice(1).map((item, index) => (
-                  <div key={index} className="h-[150px] md:h-[163px]">
+                {combiBlinds.slice(1).map((item, index) => (
+                  <div key={index} className="h-[120px] sm:h-[150px]">
                     <img
                       src={item.image}
                       alt={`Blind ${index + 1}`}
@@ -543,18 +520,194 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
 
-              {/* Right main image */}
-              <div className="w-full md:w-auto">
-                <video
-                  src={rollerBlindsImg[0].image} // <-- replace with your video field
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+          {/* ROLLER BLINDS */}
+          <div
+            className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            id="roller-blinds-sunscreen"
+          >
+            {/* Desktop layout: Text + Images/Video */}
+            <div className="hidden md:flex flex-row gap-8 w-full">
+              {/* Text & Details Section (Desktop) */}
+              <div
+                className="w-full max-w-[550px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+                data-aos="fade-up"
+              >
+                {RollerBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
+                          ABOUT
+                        </h1>
+                        <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base md:text-lg font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm md:text-base">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Desktop button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { md: "1.1rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 300,
+                    mt: 6,
+                  }}
                   onClick={() => router.push("/details/rollers")}
-                />
+                >
+                  View More
+                </Button>
+              </div>
+
+              {/* Images + Video Section (Desktop) */}
+              <div
+                className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+                data-aos="fade-up"
+              >
+                {/* Left stacked images */}
+                <div
+                  className="flex flex-col gap-4 w-full md:w-1/4"
+                  onClick={() => router.push("/details/rollers")}
+                >
+                  {rollerBlindsImg.slice(1).map((item, index) => (
+                    <div key={index} className="h-[150px] md:h-[163px]">
+                      <img
+                        src={item.image}
+                        alt={`Blind ${index + 1}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Right main video */}
+                <div className="w-full md:w-auto">
+                  <video
+                    src={rollerBlindsImg[0].image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                    onClick={() => router.push("/details/rollers")}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile layout: Text + Images side by side (video hidden) */}
+            <div
+              className="flex md:hidden flex-row gap-4 w-full"
+              data-aos="fade-up"
+            >
+              {/* Text Section */}
+              <div className="flex-1 flex flex-col">
+                {RollerBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm opacity-30">ABOUT</h1>
+                        <h1 className="text-lg sm:text-xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Mobile button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 200,
+                    mt: 4,
+                  }}
+                  onClick={() => router.push("/details/rollers")}
+                >
+                  View More
+                </Button>
+              </div>
+
+              {/* Images Section (mobile right side) */}
+              <div
+                className="flex flex-col gap-4 w-[45%]"
+                onClick={() => router.push("/details/rollers")}
+              >
+                {rollerBlindsImg.slice(1).map((item, index) => (
+                  <div key={index} className="h-[120px] sm:h-[150px]">
+                    <img
+                      src={item.image}
+                      alt={`Blind ${index + 1}`}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -564,218 +717,375 @@ export default function Home() {
             className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
             id="fabric-curtains-and-sheer"
           >
-            {/* Images Section */}
-            <div
-              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-up"
-            >
-              {/* Left main video */}
-              <div className="w-full md:w-auto">
-                <video
-                  src={curtainsBlindsImg[0].image} // <-- replace with your video field
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+            {/* Desktop layout: Video + Images + Text */}
+            <div className="hidden md:flex flex-row gap-8 w-full">
+              {/* Left Video + Images */}
+              <div
+                className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+                data-aos="fade-up"
+              >
+                {/* Left main video */}
+                <div className="w-full md:w-auto">
+                  <video
+                    src={curtainsBlindsImg[0].image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                    onClick={() => router.push("/details/curtainSheer")}
+                  />
+                </div>
+
+                {/* Right stacked images */}
+                <div
+                  className="flex flex-col gap-4 w-full md:w-1/4"
                   onClick={() => router.push("/details/curtainSheer")}
-                />
+                >
+                  {curtainsBlindsImg.slice(1).map((item, index) => (
+                    <div key={index} className="h-[150px] md:h-[163px]">
+                      <img
+                        src={item.image}
+                        alt={`Curtain ${index + 1}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Right stacked images (hidden on mobile) */}
+              {/* Text & Details Section (Desktop) */}
               <div
-                className="flex flex-col gap-4 w-full md:w-1/4"
+                className="w-full max-w-[550px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+                data-aos="fade-up"
+              >
+                {FabriccurtainSheer.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
+                          ABOUT
+                        </h1>
+                        <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base md:text-lg font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm md:text-base">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Desktop button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { md: "1.1rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 300,
+                    mt: 6,
+                  }}
+                  onClick={() => router.push("/details/curtainSheer")}
+                >
+                  View More
+                </Button>
+              </div>
+            </div>
+
+            {/* Mobile layout: Text + Images (video hidden) */}
+            <div
+              className="flex md:hidden flex-row gap-4 w-full"
+              data-aos="fade-up"
+            >
+              {/* Text Section */}
+              <div className="flex-1 flex flex-col">
+                {FabriccurtainSheer.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm opacity-30">ABOUT</h1>
+                        <h1 className="text-lg sm:text-xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Mobile button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 200,
+                    mt: 4,
+                  }}
+                  onClick={() => router.push("/details/curtainSheer")}
+                >
+                  View More
+                </Button>
+              </div>
+
+              {/* Images Section (mobile right side) */}
+              <div
+                className="flex flex-col gap-4 w-[45%]"
                 onClick={() => router.push("/details/curtainSheer")}
               >
                 {curtainsBlindsImg.slice(1).map((item, index) => (
-                  <div key={index} className="h-[150px] md:h-[163px]">
+                  <div key={index} className="h-[120px] sm:h-[150px]">
                     <img
                       src={item.image}
-                      alt={`Blind ${index + 1}`}
+                      alt={`Curtain ${index + 1}`}
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Korean Combi Blinds */}
-            <div
-              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-up"
-            >
-              {FabriccurtainSheer.map((item, index) => {
-                if (item.type === "header") {
-                  return (
-                    <div key={index}>
-                      <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
-                        ABOUT
-                      </h1>
-                      <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
-                        {item.header}
-                      </h1>
-                      <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  );
-                }
-
-                if (item.type === "detail") {
-                  const IconComponent = item.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
-                    >
-                      <div className="flex items-center gap-2">
-                        {IconComponent && <IconComponent fontSize="medium" />}
-                        <h1 className="text-sm sm:text-base md:text-lg font-bold">
-                          {item.title}
-                        </h1>
-                      </div>
-                      <p className="text-gray-700 text-xs sm:text-sm md:text-base">
-                        {item.details}
-                      </p>
-                    </div>
-                  );
-                }
-
-                return null;
-              })}
-
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.1rem" },
-                  fontWeight: 600,
-                  backgroundColor: "#967F5D",
-                  textTransform: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  maxWidth: 300,
-                  gap: 2,
-                  boxSizing: "border-box",
-                  mt: 6,
-                }}
-                onClick={() => router.push("/details/curtainSheer")} // go to modal path
-              >
-                <span style={{ marginRight: 8, fontSize: "inherit" }}>
-                  View More
-                </span>
-              </Button>
             </div>
           </div>
 
           {/* Venetian Blinds */}
           <div
-            className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
             id="venetian-blinds"
           >
-            {/* Text & Details Section */}
-            <div
-              className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-up"
-            >
-              {VenetianBlinds.map((item, index) => {
-                if (item.type === "header") {
-                  return (
-                    <div key={index}>
-                      <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
-                        ABOUT
-                      </h1>
-                      <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
-                        {item.header}
-                      </h1>
-                      <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  );
-                }
-
-                if (item.type === "detail") {
-                  const IconComponent = item.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
-                    >
-                      <div className="flex items-center gap-2">
-                        {/* Only render icon if it exists */}
-                        {IconComponent && <IconComponent fontSize="medium" />}
-                        <h1 className="text-sm sm:text-base md:text-lg font-bold">
-                          {item.title}
-                        </h1>
-                      </div>
-                      <p className="text-gray-700 text-xs sm:text-sm md:text-base">
-                        {item.details}
-                      </p>
-                    </div>
-                  );
-                }
-
-                return null;
-              })}
-
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.1rem" },
-                  fontWeight: 600,
-                  backgroundColor: "#967F5D",
-                  textTransform: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  maxWidth: 300,
-                  gap: 2,
-                  boxSizing: "border-box",
-                  mt: 6,
-                }}
-                onClick={() => router.push("/details/venetian")} // go to modal path
+            {/* Desktop layout: Text + Images/Video */}
+            <div className="hidden md:flex flex-row gap-8 w-full">
+              {/* Text & Details Section (Desktop) */}
+              <div
+                className="w-full max-w-[550px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+                data-aos="fade-up"
               >
-                <span style={{ marginRight: 8, fontSize: "inherit" }}>
+                {VenetianBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
+                          ABOUT
+                        </h1>
+                        <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base md:text-lg font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm md:text-base">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Desktop button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { md: "1.1rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 300,
+                    mt: 6,
+                  }}
+                  onClick={() => router.push("/details/venetian")}
+                >
                   View More
-                </span>
-              </Button>
+                </Button>
+              </div>
+
+              {/* Images + Video Section (Desktop) */}
+              <div
+                className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+                data-aos="fade-up"
+              >
+                {/* Left stacked images */}
+                <div
+                  className="flex flex-col gap-4 w-full md:w-1/4"
+                  onClick={() => router.push("/details/venetian")}
+                >
+                  {venetianBlindsImg.slice(1).map((item, index) => (
+                    <div key={index} className="h-[150px] md:h-[163px]">
+                      <img
+                        src={item.image}
+                        alt={`Venetian ${index + 1}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Right main video */}
+                <div className="w-full md:w-auto">
+                  <video
+                    src={venetianBlindsImg[0].image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                    onClick={() => router.push("/details/venetian")}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Images Section */}
+            {/* Mobile layout: Text + Images (video hidden) */}
             <div
-              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              className="flex md:hidden flex-row gap-4 w-full"
               data-aos="fade-up"
             >
-              {/* Left stacked images */}
+              {/* Text Section */}
+              <div className="flex-1 flex flex-col">
+                {VenetianBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm opacity-30">ABOUT</h1>
+                        <h1 className="text-lg sm:text-xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Mobile button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 200,
+                    mt: 4,
+                  }}
+                  onClick={() => router.push("/details/venetian")}
+                >
+                  View More
+                </Button>
+              </div>
+
+              {/* Images Section (mobile right side) */}
               <div
-                className="flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-[45%]"
                 onClick={() => router.push("/details/venetian")}
               >
                 {venetianBlindsImg.slice(1).map((item, index) => (
-                  <div key={index} className="h-[150px] md:h-[163px]">
+                  <div key={index} className="h-[120px] sm:h-[150px]">
                     <img
                       src={item.image}
-                      alt={`Blind ${index + 1}`}
+                      alt={`Venetian ${index + 1}`}
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </div>
                 ))}
-              </div>
-
-              {/* Right main image */}
-              <div className="w-full md:w-auto">
-                <video
-                  src={venetianBlindsImg[0].image} // <-- replace with your video field
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
-                  onClick={() => router.push("/details/venetian")}
-                />
               </div>
             </div>
           </div>
@@ -785,31 +1095,179 @@ export default function Home() {
             className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
             id="vertical-blind"
           >
-            {/* Images Section */}
-            <div
-              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-up"
-            >
-              {/* Left main image */}
-              <div className="w-full md:w-auto">
-                <video
-                  src={verticalBlindsImg[0].image} // <-- replace with your video field
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+            {/* Desktop layout: Video + Images + Text */}
+            <div className="hidden md:flex flex-row gap-8 w-full">
+              {/* Images + Video Section (Desktop) */}
+              <div
+                className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+                data-aos="fade-up"
+              >
+                {/* Left main video */}
+                <div className="w-full md:w-auto">
+                  <video
+                    src={verticalBlindsImg[0].image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                    onClick={() => router.push("/details/vertical")}
+                  />
+                </div>
+
+                {/* Right stacked images */}
+                <div
+                  className="flex flex-col gap-4 w-full md:w-1/4"
                   onClick={() => router.push("/details/vertical")}
-                />
+                >
+                  {verticalBlindsImg.slice(1).map((item, index) => (
+                    <div key={index} className="h-[150px] md:h-[163px]">
+                      <img
+                        src={item.image}
+                        alt={`Blind ${index + 1}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Right stacked images */}
+              {/* Text & Details Section (Desktop) */}
               <div
-                className="flex flex-col gap-4 w-full md:w-1/4"
+                className="w-full max-w-[550px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+                data-aos="fade-up"
+              >
+                {VerticalBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
+                          ABOUT
+                        </h1>
+                        <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base md:text-lg font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm md:text-base">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Desktop button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { md: "1.1rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 300,
+                    mt: 6,
+                  }}
+                  onClick={() => router.push("/details/vertical")}
+                >
+                  View More
+                </Button>
+              </div>
+            </div>
+
+            {/* Mobile layout: Text + Images side by side (video hidden) */}
+            <div
+              className="flex md:hidden flex-row gap-4 w-full"
+              data-aos="fade-up"
+            >
+              {/* Text Section */}
+              <div className="flex-1 flex flex-col">
+                {VerticalBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm opacity-30">ABOUT</h1>
+                        <h1 className="text-lg sm:text-xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Mobile button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 200,
+                    mt: 4,
+                  }}
+                  onClick={() => router.push("/details/vertical")}
+                >
+                  View More
+                </Button>
+              </div>
+
+              {/* Images Section (mobile right side) */}
+              <div
+                className="flex flex-col gap-4 w-[45%]"
                 onClick={() => router.push("/details/vertical")}
               >
                 {verticalBlindsImg.slice(1).map((item, index) => (
-                  <div key={index} className="h-[150px] md:h-[163px]">
+                  <div key={index} className="h-[120px] sm:h-[150px]">
                     <img
                       src={item.image}
                       alt={`Blind ${index + 1}`}
@@ -818,166 +1276,187 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Korean Combi Blinds */}
-            <div
-              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-up"
-            >
-              {VerticalBlinds.map((item, index) => {
-                if (item.type === "header") {
-                  return (
-                    <div key={index}>
-                      <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
-                        ABOUT
-                      </h1>
-                      <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
-                        {item.header}
-                      </h1>
-                      <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  );
-                }
-
-                if (item.type === "detail") {
-                  const IconComponent = item.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
-                    >
-                      <div className="flex items-center gap-2">
-                        {/* Only render icon if it exists */}
-                        {IconComponent && <IconComponent fontSize="medium" />}
-                        <h1 className="text-sm sm:text-base md:text-lg font-bold">
-                          {item.title}
-                        </h1>
-                      </div>
-                      <p className="text-gray-700 text-xs sm:text-sm md:text-base">
-                        {item.details}
-                      </p>
-                    </div>
-                  );
-                }
-
-                return null;
-              })}
-
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.1rem" },
-                  fontWeight: 600,
-                  backgroundColor: "#967F5D",
-                  textTransform: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  maxWidth: 300,
-                  gap: 2,
-                  boxSizing: "border-box",
-                  mt: 6, // add spacing from last detail
-                }}
-                onClick={() => router.push("/details/vertical")} // go to modal path
-              >
-                <span style={{ marginRight: 8, fontSize: "inherit" }}>
-                  View More
-                </span>
-              </Button>
             </div>
           </div>
 
           {/* Wooden Blinds */}
           <div
-            className="flex flex-col-reverse md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
+            className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
             id="wooden-blind"
           >
-            {/* Text & Details Section */}
-            <div
-              className="w-full max-w-full md:max-w-[700px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-up"
-            >
-              {WoodenBlinds.map((item, index) => {
-                if (item.type === "header") {
-                  return (
-                    <div key={index}>
-                      <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
-                        ABOUT
-                      </h1>
-                      <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
-                        {item.header}
-                      </h1>
-                      <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  );
-                }
-
-                if (item.type === "detail") {
-                  const IconComponent = item.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
-                    >
-                      <div className="flex items-center gap-2">
-                        {/* Only render icon if it exists */}
-                        {IconComponent && <IconComponent fontSize="medium" />}
-                        <h1 className="text-sm sm:text-base md:text-lg font-bold">
-                          {item.title}
-                        </h1>
-                      </div>
-                      <p className="text-gray-700 text-xs sm:text-sm md:text-base">
-                        {item.details}
-                      </p>
-                    </div>
-                  );
-                }
-
-                return null;
-              })}
-
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.1rem" },
-                  fontWeight: 600,
-                  backgroundColor: "#967F5D",
-                  textTransform: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  maxWidth: 300,
-                  gap: 2,
-                  boxSizing: "border-box",
-                  mt: 6,
-                }}
-                onClick={() => router.push("/details/wooden")} // go to modal path
+            {/* Desktop layout: Text + Images/Video */}
+            <div className="hidden md:flex flex-row gap-8 w-full">
+              {/* Text & Details Section (Desktop) */}
+              <div
+                className="w-full max-w-[550px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+                data-aos="fade-up"
               >
-                <span style={{ marginRight: 8, fontSize: "inherit" }}>
+                {WoodenBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
+                          ABOUT
+                        </h1>
+                        <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base md:text-lg font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm md:text-base">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Desktop button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { md: "1.1rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 300,
+                    mt: 6,
+                  }}
+                  onClick={() => router.push("/details/wooden")}
+                >
                   View More
-                </span>
-              </Button>
+                </Button>
+              </div>
+
+              {/* Images + Video Section (Desktop) */}
+              <div
+                className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+                data-aos="fade-up"
+              >
+                {/* Left stacked images */}
+                <div
+                  className="flex flex-col gap-4 w-full md:w-1/4"
+                  onClick={() => router.push("/details/wooden")}
+                >
+                  {woodenBlindsImg.slice(1).map((item, index) => (
+                    <div key={index} className="h-[150px] md:h-[163px]">
+                      <img
+                        src={item.image}
+                        alt={`Blind ${index + 1}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Right main video */}
+                <div className="w-full md:w-auto">
+                  <video
+                    src={woodenBlindsImg[0].image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                    onClick={() => router.push("/details/wooden")}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Images Section */}
+            {/* Mobile layout: Text + Images side by side (video hidden) */}
             <div
-              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+              className="flex md:hidden flex-row gap-4 w-full"
               data-aos="fade-up"
             >
-              {/* Left stacked images */}
+              {/* Text Section */}
+              <div className="flex-1 flex flex-col">
+                {WoodenBlinds.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm opacity-30">ABOUT</h1>
+                        <h1 className="text-lg sm:text-xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Mobile button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 200,
+                    mt: 4,
+                  }}
+                  onClick={() => router.push("/details/wooden")}
+                >
+                  View More
+                </Button>
+              </div>
+
+              {/* Images Section (mobile right side) */}
               <div
-                className="flex flex-col gap-4 w-full md:w-1/4"
+                className="flex flex-col gap-4 w-[45%]"
                 onClick={() => router.push("/details/wooden")}
               >
                 {woodenBlindsImg.slice(1).map((item, index) => (
-                  <div key={index} className="h-[150px] md:h-[163px]">
+                  <div key={index} className="h-[120px] sm:h-[150px]">
                     <img
                       src={item.image}
                       alt={`Blind ${index + 1}`}
@@ -985,19 +1464,6 @@ export default function Home() {
                     />
                   </div>
                 ))}
-              </div>
-
-              {/* Right main image */}
-              <div className="w-full md:w-auto">
-                <video
-                  src={woodenBlindsImg[0].image} // <-- replace with your video field
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
-                  onClick={() => router.push("/details/wooden")}
-                />
               </div>
             </div>
           </div>
@@ -1007,106 +1473,184 @@ export default function Home() {
             className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
             id="accordion-folding-doors"
           >
-            {/* Images Section */}
-            <div
-              className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
-              data-aos="fade-up"
-            >
-              {/* Left main image */}
-              <div className="w-full md:w-auto">
-                <img
-                  src={accordionBlindsImg[0].image} // <-- replace with your image field
-                  alt="Accordion Blind"
-                  className="w-full h-auto md:w-[700px] md:h-[700px] object-cover rounded-tl-[50px] md:rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg cursor-pointer"
+            {/* Desktop layout: Images + Text */}
+            <div className="hidden md:flex flex-row gap-8 w-full">
+              {/* Images Section (Desktop) */}
+              <div
+                className="flex flex-col md:flex-row justify-center gap-4 w-full max-w-[1200px] mx-auto"
+                data-aos="fade-up"
+              >
+                {/* Left main image */}
+                <div className="w-full md:w-auto">
+                  <img
+                    src={accordionBlindsImg[0].image}
+                    alt="Accordion Blind"
+                    className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg cursor-pointer"
+                    onClick={() => router.push("/details/accordion")}
+                  />
+                </div>
+
+                {/* Right stacked images */}
+                <div
+                  className="flex flex-col gap-4 w-full md:w-1/4"
                   onClick={() => router.push("/details/accordion")}
-                />
+                >
+                  {accordionBlindsImg.slice(1).map((item, index) => (
+                    <div key={index} className="h-[150px] md:h-[163px]">
+                      <img
+                        src={item.image}
+                        alt={`Accordion Blind ${index + 1}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Right stacked images */}
+              {/* Text Section (Desktop) */}
               <div
-                className="flex flex-col gap-4 w-full md:w-1/4"
+                className="w-full max-w-[550px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
+                data-aos="fade-up"
+              >
+                {AccordionFoldingDoors.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
+                          ABOUT
+                        </h1>
+                        <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base md:text-lg font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm md:text-base">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Desktop Button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { md: "1.1rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 300,
+                    mt: 6,
+                  }}
+                  onClick={() => router.push("/details/accordion")}
+                >
+                  View More
+                </Button>
+              </div>
+            </div>
+
+            {/* Mobile layout: Text + Stacked images (main image hidden) */}
+            <div
+              className="flex md:hidden flex-row gap-4 w-full"
+              data-aos="fade-up"
+            >
+              {/* Text Section */}
+              <div className="flex-1 flex flex-col">
+                {AccordionFoldingDoors.map((item, index) => {
+                  if (item.type === "header") {
+                    return (
+                      <div key={index}>
+                        <h1 className="text-xs sm:text-sm opacity-30">ABOUT</h1>
+                        <h1 className="text-lg sm:text-xl font-bold">
+                          {item.header}
+                        </h1>
+                        <p className="text-gray-700 text-sm sm:text-base mt-2">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  if (item.type === "detail") {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 sm:gap-2 mt-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          {IconComponent && <IconComponent fontSize="medium" />}
+                          <h1 className="text-sm sm:text-base font-bold">
+                            {item.title}
+                          </h1>
+                        </div>
+                        <p className="text-gray-700 text-xs sm:text-sm">
+                          {item.details}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Mobile Button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    fontWeight: 600,
+                    backgroundColor: "#967F5D",
+                    textTransform: "none",
+                    width: "100%",
+                    maxWidth: 200,
+                    mt: 4,
+                  }}
+                  onClick={() => router.push("/details/accordion")}
+                >
+                  View More
+                </Button>
+              </div>
+
+              {/* Images Section (mobile right side) */}
+              <div
+                className="flex flex-col gap-4 w-[45%]"
                 onClick={() => router.push("/details/accordion")}
               >
                 {accordionBlindsImg.slice(1).map((item, index) => (
-                  <div key={index} className="h-[150px] md:h-[163px]">
+                  <div key={index} className="h-[120px] sm:h-[150px]">
                     <img
                       src={item.image}
-                      alt={`Blind ${index + 1}`}
+                      alt={`Accordion Blind ${index + 1}`}
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Korean Combi Blinds */}
-            <div
-              className="w-full max-w-full md:max-w-[800px] flex flex-col px-0 sm:px-2 md:px-4 mx-auto"
-              data-aos="fade-up"
-            >
-              {AccordionFoldingDoors.map((item, index) => {
-                if (item.type === "header") {
-                  return (
-                    <div key={index}>
-                      <h1 className="text-xs sm:text-sm md:text-lg opacity-30">
-                        ABOUT
-                      </h1>
-                      <h1 className="text-lg sm:text-xl md:text-2xl font-bold">
-                        {item.header}
-                      </h1>
-                      <p className="text-gray-700 text-sm sm:text-base md:text-lg mt-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  );
-                }
-
-                if (item.type === "detail") {
-                  const IconComponent = item.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col gap-1 sm:gap-2 mt-4 sm:mt-6 md:mt-8"
-                    >
-                      <div className="flex items-center gap-2">
-                        {/* Only render icon if it exists */}
-                        {IconComponent && <IconComponent fontSize="medium" />}
-                        <h1 className="text-sm sm:text-base md:text-lg font-bold">
-                          {item.title}
-                        </h1>
-                      </div>
-                      <p className="text-gray-700 text-xs sm:text-sm md:text-base">
-                        {item.details}
-                      </p>
-                    </div>
-                  );
-                }
-
-                return null;
-              })}
-
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.1rem" },
-                  fontWeight: 600,
-                  backgroundColor: "#967F5D",
-                  textTransform: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  maxWidth: 300,
-                  gap: 2,
-                  boxSizing: "border-box",
-                  mt: 6, // add spacing from last detail
-                }}
-                onClick={() => router.push("/details/accordion")} // go to modal path
-              >
-                <span style={{ marginRight: 8, fontSize: "inherit" }}>
-                  View More
-                </span>
-              </Button>
             </div>
           </div>
         </div>
@@ -1159,81 +1703,13 @@ export default function Home() {
                 {recentProducts.map((product, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 w-[80%] xs:w-[70%] sm:w-[48%] md:w-[30%] lg:w-[23%] snap-start bg-white rounded-xl shadow-md p-3"
+                    className="flex-shrink-0 w-[80%] xs:w-[70%] sm:w-[48%] md:w-[30%] lg:w-[23%] snap-start rounded-xl shadow-md overflow-hidden"
                   >
-                    {/* Header (avatar + name + time) */}
-                    <div className="flex items-center gap-3 mb-3">
-                      <AccountCircleIcon
-                        sx={{ fontSize: 40, color: "#6b7280" }}
-                      />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-gray-800 text-sm">
-                          {product.comments[0]?.name}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          {product.comments[0]?.time}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Product Image */}
                     <img
                       src={product.image}
                       alt={`Recent Product ${index + 1}`}
-                      className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover rounded-lg"
+                      className="w-full h-full object-cover"
                     />
-
-                    {/* Like/Comment/Share Buttons */}
-                    <div className="flex justify-around text-gray-600 text-sm font-medium mt-2 border-y border-gray-200 py-2">
-                      <button className="flex items-center gap-1 hover:text-blue-600">
-                        <ThumbUpOutlinedIcon /> Like
-                      </button>
-                      <button className="flex items-center gap-1 hover:text-blue-600">
-                        <ChatBubbleOutlineOutlinedIcon /> Comment
-                      </button>
-                      <button className="flex items-center gap-1 hover:text-blue-600">
-                        <ShareOutlinedIcon /> Share
-                      </button>
-                    </div>
-
-                    {/* Comments - Horizontal scroll */}
-                    <div className="mt-3 overflow-x-auto scrollbar-hide">
-                      <div className="flex gap-4 snap-x snap-mandatory">
-                        {product.comments.map((comment, i) => (
-                          <div
-                            key={i}
-                            className="flex-shrink-0 w-full snap-start bg-gray-50 p-3 rounded-lg"
-                          >
-                            <div className="flex items-start gap-3">
-                              {/* Avatar */}
-                              <div className="flex flex-col">
-                                {/* Name + Time */}
-                                <div className="flex items-center gap-2">
-                                  <span className="font-semibold text-gray-800 text-sm">
-                                    {comment.name}
-                                  </span>
-                                  <span className="text-xs text-gray-500">
-                                    · {comment.time}
-                                  </span>
-                                </div>
-
-                                {/* Feedback */}
-                                <p className="text-sm text-gray-700 leading-snug">
-                                  {comment.feedback}
-                                </p>
-
-                                {/* Stars */}
-                                <div className="flex mt-1 text-yellow-500">
-                                  {[...Array(5)].map((_, starIndex) => (
-                                    <Star key={starIndex} fontSize="small" />
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 ))}
               </div>

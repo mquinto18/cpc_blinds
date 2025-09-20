@@ -77,40 +77,40 @@ export default function CombiDetailsModal() {
       {
         image: "/koreanCombi/semiblackout/PRIMEWOOD/woodlookPrimeIMG.png",
         name: "Semi Blackout - Woodlook Prime",
-        images: ["/koreanCombi/semiblackout/PRIMEWOOD/woodlookPrimeCOLOR.png"],
+        images: ["/koreanCombi/semiblackout/PRIMEWOOD/woodlookPrimeColor.png"],
       },
       {
         image: "/koreanCombi/semiblackout/ELUXE/woodlookEluxeIMG.png",
         name: "Semi Blackout - Woodlook Eluxe",
-        images: ["/koreanCombi/semiblackout/ELUXE/woodlookEluxeCOLOR.png"],
+        images: ["/koreanCombi/semiblackout/ELUXE/woodlookEluxeColor.png"],
       },
       {
         image: "/koreanCombi/semiblackout/LINEN/linenIMG.png",
         name: "Semi Blackout - Natural Linen",
-        images: ["/koreanCombi/semiblackout/LINEN/linenCOLOR.png"],
+        images: ["/koreanCombi/semiblackout/LINEN/linenColor.png"],
       },
       {
         image: "/koreanCombi/semiblackout/SILK/silkIMG.png",
         name: "Semi Blackout - Silk",
-        images: ["/koreanCombi/semiblackout/SILK/silkCOLOR.png"],
+        images: ["/koreanCombi/semiblackout/SILK/silkColor.png"],
       },
       {
         image: "/koreanCombi/semiblackout/VEGA/vegaIMG.png",
         name: "Semi Blackout - Vega",
-        images: ["/koreanCombi/semiblackout/VEGA/vegaCOLOR.png"],
+        images: ["/koreanCombi/semiblackout/VEGA/vegaColor.png"],
       },
       {
         image: "/koreanCombi/semiblackout/TRILOGY/trilogyIMG.png",
         name: "Semi Blackout - Trilogy",
         images: [
-          "/koreanCombi/semiblackout/TRILOGY/trilogyCOLOR.png",
-          "/koreanCombi/semiblackout/TRILOGY/trilogyCOLOR1.png",
+          "/koreanCombi/semiblackout/TRILOGY/trilogyColor.png",
+          "/koreanCombi/semiblackout/TRILOGY/trilogyColor1.png",
         ],
       },
       {
         image: "/koreanCombi/semiblackout/TIMBER/timberIMG.png",
         name: "Semi Blackout - Timber",
-        images: ["/koreanCombi/semiblackout/TIMBER/timberCOLOR.png"],
+        images: ["/koreanCombi/semiblackout/TIMBER/timberColor.png"],
       },
       {
         image: "/koreanCombi/semiblackout/LOSA/losaWoodIMG.png",
@@ -143,37 +143,37 @@ export default function CombiDetailsModal() {
       {
         image: "/koreanCombi/blackout/LUXURY/luxuryIMG.png",
         name: "Premium Blackout - Luxury",
-        images: ["/koreanCombi/blackout/LUXURY/luxuryCOLOR.png"],
+        images: ["/koreanCombi/blackout/LUXURY/luxuryColor.png"],
       },
       {
         image: "/koreanCombi/blackout/HANNOVER/hannoverIMG.png",
         name: "Premium Blackout - Hannover",
-        images: ["/koreanCombi/blackout/HANNOVER/hannoverCOLOR.png"],
+        images: ["/koreanCombi/blackout/HANNOVER/hannoverColor.png"],
       },
       {
-        image: "/koreanCombi/blackout/PICASSO/picassoIMG.png",
+        image: "/koreanCombi/blackout/PICASSO/PicassoIMG.png",
         name: "Premium Blackout - Picasso",
-        images: ["/koreanCombi/blackout/PICASSO/picassoCOLOR.png"],
+        images: ["/koreanCombi/blackout/PICASSO/PicassoCOLOR.png"],
       },
       {
         image: "/koreanCombi/blackout/MAJESTY/majestyIMG.png",
         name: "Premium Blackout - Majesty",
-        images: ["/koreanCombi/blackout/MAJESTY/majestyCOLOR.png"],
+        images: ["/koreanCombi/blackout/MAJESTY/majestyColor.png"],
       },
       {
         image: "/koreanCombi/blackout/PRIMA-S/primaSIMG.png",
         name: "Premium Blackout - Prima-S",
-        images: ["/koreanCombi/blackout/PRIMA-S/primaSCOLOR.png"],
+        images: ["/koreanCombi/blackout/PRIMA-S/primaSColor.png"],
       },
       {
         image: "/koreanCombi/blackout/ULTIMA/ultimaIMG.png",
         name: "Premium Blackout - Ultima",
-        images: ["/koreanCombi/blackout/ULTIMA/ultimaCOLOR.png"],
+        images: ["/koreanCombi/blackout/ULTIMA/ultimaColor.png"],
       },
       {
         image: "/koreanCombi/blackout/ADELINE/adellineIIMG.png",
         name: "Premium Blackout - Adeline",
-        images: ["/koreanCombi/blackout/ADELINE/adellineCOLOR.png"],
+        images: ["/koreanCombi/blackout/ADELINE/adellineColor.png"],
       },
     ],
   };
