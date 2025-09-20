@@ -137,7 +137,7 @@ export default function ContactInfo() {
           >
             <Box mb={3}>
               <Image
-                src="/mainLogo.png"
+                src="/mainlogo.png"
                 alt="Logo"
                 width={120}
                 height={120}
