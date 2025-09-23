@@ -1,6 +1,7 @@
 import React, { JSX } from "react";
 import { motion } from "framer-motion";
-import { Typography, Button, Card, CardContent } from "@mui/material";
+import { Typography, Button, Card, CardContent, Box } from "@mui/material";
+import Image from "next/image";
 
 // AboutCpcMnl.tsx
 // Modern, classy About Us component for CPC MNL Window Blinds
@@ -14,47 +15,15 @@ export default function AboutCpcMnl(): JSX.Element {
     >
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
         {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <Typography
-            variant="h3"
-            className="font-bold text-3xl lg:text-4xl mb-4"
-          >
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-4 items-center sm:items-end justify-center text-center sm:text-left">
-              {/* First Logo */}
-              <img
-                src="/cpc_logs.png"
-                alt="CPC MNL Window Blinds"
-                className="w-[140px] sm:w-[180px] md:w-[220px] lg:w-[100px] object-contain"
-              />
-
-              {/* Second Logo */}
-              <img
-                src="/mnl_logs.png"
-                alt="CPC MNL Window Blinds"
-                className="w-[120px] sm:w-[160px] md:w-[200px] lg:w-[150px] object-contain self-center sm:self-end"
-              />
-
-              {/* Title */}
-              <Typography
-                variant="h3"
-                className="!font-serif text-base sm:text-lg md:text-md lg:text-2xl font-semibold tracking-widest mt-2 sm:mt-0"
-              >
-                WINDOW BLINDS
-              </Typography>
-            </div>
-
-            <Typography variant="subtitle1" className=" text-lg">
-              Elegance, functionality, and comfort — transforming every window
-              into a statement piece.
-            </Typography>
-          </Typography>
-        </motion.div>
-
+        <Box mb={3}>
+          <Image
+            src="/mainlogo.png"
+            alt="Logo"
+            width={200}
+            height={200}
+            className="mx-auto"
+          />
+        </Box>
         {/* Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Text */}

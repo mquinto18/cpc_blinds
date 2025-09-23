@@ -9,29 +9,31 @@ export const recentProducts = [
   {
     image: "/feedback2.png",
   },
+
   {
-    image: "/feedback3.png",
+    image: "/change8.png",
   },
+
   {
-    image: "/feedback4.png",
-  },
-  {
-    image: "/feedback5.png",
+    image: "/change3.png",
   },
   {
     image: "/feedback7.png",
   },
   {
-    image: "/feedback8.png",
+    image: "/change4.png",
   },
   {
-    image: "/feedback9.png",
+    image: "/change5.png",
   },
   {
-    image: "/feedback10.png",
+    image: "/change6.png",
   },
   {
-    image: "/fedback11.png",
+    image: "/change7.png",
+  },
+  {
+    image: "/change1.png",
   },
   {
     image: "/feedback12.png",
@@ -52,7 +54,7 @@ export const recentProducts = [
     image: "/feedback17.png",
   },
   {
-    image: "/feedback18.png",
+    image: "/change2.png",
   },
   {
     image: "/feedback19.png",
@@ -161,16 +163,16 @@ export const venetianBlindsImg = [
     image: "/venetianMain.mp4",
   },
   {
-    image: "/venetian1.jpg",
+    image: "/venetianew1.jpg",
   },
   {
-    image: "/venetian2.jpg",
+    image: "/venetianew2.jpg",
   },
   {
-    image: "/venetian3.jpg",
+    image: "/venetianew3.jpg",
   },
   {
-    image: "/venetian4.jpg",
+    image: "/venetianew4.jpg",
   },
 ];
 
@@ -179,16 +181,16 @@ export const verticalBlindsImg = [
     image: "/verticalMain.mp4",
   },
   {
-    image: "/vertical1.jpg",
+    image: "/verticalnew1.jpg",
   },
   {
-    image: "/vertical2.jpg",
+    image: "/verticalnew2.jpg",
   },
   {
-    image: "/vertical3.jpg",
+    image: "/verticalnew3.jpg",
   },
   {
-    image: "/vertical4.jpg",
+    image: "/verticalnew4.jpg",
   },
 ];
 export const woodenBlindsImg = [
@@ -196,24 +198,24 @@ export const woodenBlindsImg = [
     image: "/woodenIMG.mp4",
   },
   {
-    image: "/wooden1.jpg",
+    image: "/woodennew1.jpg",
   },
   {
-    image: "/wooden7.jpg",
+    image: "/woodennew2.jpg",
   },
   {
-    image: "/wooden9.jpg",
+    image: "/woodennew3.jpg",
   },
   {
-    image: "/wooden8.jpg",
+    image: "/woodennew4.jpg",
   },
 ];
 export const accordionBlindsImg = [
   {
-    image: "/accordion11.jpg",
+    image: "/accordionnew1.jpg",
   },
   {
-    image: "/accordion2.png",
+    image: "/accordionnew2.jpg",
   },
   {
     image: "/accordion9.jpg",
