@@ -89,15 +89,15 @@ export const CPCImages = [
   },
   {
     productName: "Venetian Blinds",
-    image: "/venetian4.jpg",
+    image: "/venetianChange.jpg",
   },
   {
-    productName: "Vertical Blind",
-    image: "vertical2.jpg",
+    productName: "Vertical Blinds",
+    image: "verticalChange.jpg",
   },
   {
-    productName: "Wooden Blind",
-    image: "wooden2.jpg",
+    productName: "Wooden Blinds",
+    image: "woodenChange.jpg",
   },
   {
     productName: "Accordion Folding Doors",

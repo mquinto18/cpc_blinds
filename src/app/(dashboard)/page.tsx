@@ -1153,7 +1153,7 @@ active:scale-95 md:hover:scale-105"
           {/* Vertical Blinds*/}
           <div
             className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
-            id="vertical-blind"
+            id="vertical-blinds"
           >
             {/* Desktop layout: Video + Images + Text */}
             <div className="hidden md:flex flex-row gap-8 w-full">
@@ -1363,7 +1363,7 @@ active:scale-95 md:hover:scale-105"
           {/* Wooden Blinds */}
           <div
             className="flex flex-col md:flex-row md:items-center gap-8 mt-8 px-4 sm:px-6 md:px-8"
-            id="wooden-blind"
+            id="wooden-blinds"
           >
             {/* Desktop layout: Text + Images/Video */}
             <div className="hidden md:flex flex-row gap-8 w-full">
