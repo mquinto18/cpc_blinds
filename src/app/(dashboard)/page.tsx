@@ -205,7 +205,6 @@ export default function Home() {
           </Button> */}
         </div>
       </div>
-
       <div className="marquee-container">
         <div className="marquee-track">
           {[...CPCproducts, ...CPCproducts].map((product, index, arr) => (
@@ -228,9 +227,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-
       <div className=""></div>
-
       <div className="flex justify-center items-center">
         <div className="flex flex-col items-center gap-4 mt-8">
           <span
@@ -276,35 +273,40 @@ export default function Home() {
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
             className="relative flex cursor-pointer flex-col items-center 
-            min-w-[200px] w-[300px] h-[600px] group overflow-hidden 
-            rounded-[20px] shadow-md transition-all duration-700 ease-in-out"
+min-w-[200px] w-[300px] h-[600px] group overflow-hidden 
+rounded-[20px] shadow-md transition-all duration-700 ease-in-out
+active:scale-95 md:hover:scale-105"
           >
             {/* Image */}
             <img
               src={item.image}
               alt={item.productName}
               className="w-full h-full object-cover rounded-[20px] transition-transform 
-                   duration-700 ease-in-out group-hover:scale-105 group-hover:rotate-1"
+         duration-700 ease-in-out md:group-hover:scale-105 md:group-hover:rotate-1"
             />
 
             {/* Diagonal Reveal Layer */}
             <div
               className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent 
-                      translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"
+          translate-x-full md:group-hover:translate-x-0 group-active:translate-x-0 
+          transition-transform duration-700 ease-out"
             ></div>
 
-            {/* Big Product Name Reveal */}
+            {/* Product Name - Always visible on mobile, hover reveal on desktop */}
             <span
               className="absolute inset-0 flex items-center justify-center text-center 
-                   text-white text-[12px] font-extrabold tracking-wide opacity-0 
-                   group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
+         text-white text-[12px] font-extrabold tracking-wide 
+         md:opacity-0 md:group-hover:opacity-100 md:group-hover:scale-110 
+         opacity-100 group-active:scale-110
+         transition-all duration-700 ease-in-out
+         [text-shadow:2px_2px_4px_rgba(0,0,0,0.8)] md:[text-shadow:none]
+         md:group-hover:[text-shadow:2px_2px_4px_rgba(0,0,0,0.8)]"
             >
               {item.productName}
             </span>
           </div>
         ))}
       </div>
-
       <div id="products" className="w-full max-w-[1980px] mx-auto">
         <div className="flex justify-center items-center my-5">
           <div className="flex flex-col items-center gap-4 mt-8">
@@ -350,7 +352,8 @@ export default function Home() {
                 loop
                 muted
                 playsInline
-                className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                 onClick={() => router.push("/details/combi")}
               />
             </div>
@@ -437,11 +440,11 @@ export default function Home() {
 
             {/* Mobile layout: Text + Images (video already on top) */}
             <div
-              className="flex md:hidden flex-row gap-4 w-full"
+              className="flex md:hidden flex-row gap-4 w-full items-stretch"
               data-aos="fade-up"
             >
               {/* Text content */}
-              <div className="flex-1 flex flex-col">
+              <div className="flex-1 flex flex-col justify-between">
                 {combiBlindsDetails.map((item, index) => {
                   if (item.type === "header") {
                     return (
@@ -501,11 +504,11 @@ export default function Home() {
 
               {/* Images on the right */}
               <div
-                className="flex flex-col gap-4 w-[45%]"
+                className="flex flex-col gap-4 flex-1"
                 onClick={() => router.push("/details/combi")}
               >
                 {combiBlinds.slice(1).map((item, index) => (
-                  <div key={index} className="h-[120px] sm:h-[150px]">
+                  <div key={index} className="flex-1">
                     <img
                       src={item.image}
                       alt={`Blind ${index + 1}`}
@@ -637,15 +640,16 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-[280px] sm:h-[350px] object-cover rounded-tl-[200px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                   onClick={() => router.push("/details/rollers")}
                 />
               </div>
 
               {/* Text + Images (side by side) */}
-              <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-row gap-4 w-full items-stretch">
                 {/* Text Section */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col justify-between">
                   {RollerBlinds.map((item, index) => {
                     if (item.type === "header") {
                       return (
@@ -707,13 +711,13 @@ export default function Home() {
                   </Button>
                 </div>
 
-                {/* Images Section (mobile right side) */}
+                {/* Images Section */}
                 <div
-                  className="flex flex-col gap-4 w-[45%]"
+                  className="flex flex-col gap-4 flex-1"
                   onClick={() => router.push("/details/rollers")}
                 >
                   {rollerBlindsImg.slice(1).map((item, index) => (
-                    <div key={index} className="h-[120px] sm:h-[150px]">
+                    <div key={index} className="flex-1">
                       <img
                         src={item.image}
                         alt={`Blind ${index + 1}`}
@@ -846,15 +850,16 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-[280px] sm:h-[350px] object-cover rounded-tl-[200px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                   onClick={() => router.push("/details/curtainSheer")}
                 />
               </div>
 
               {/* Text + Images below video */}
-              <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-row gap-4 w-full items-stretch">
                 {/* Text Section */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col justify-between">
                   {FabriccurtainSheer.map((item, index) => {
                     if (item.type === "header") {
                       return (
@@ -916,13 +921,13 @@ export default function Home() {
                   </Button>
                 </div>
 
-                {/* Images Section (mobile right side) */}
+                {/* Images Section */}
                 <div
-                  className="flex flex-col gap-4 w-[45%]"
+                  className="flex flex-col gap-4 flex-1"
                   onClick={() => router.push("/details/curtainSheer")}
                 >
                   {curtainsBlindsImg.slice(1).map((item, index) => (
-                    <div key={index} className="h-[120px] sm:h-[150px]">
+                    <div key={index} className="flex-1">
                       <img
                         src={item.image}
                         alt={`Curtain ${index + 1}`}
@@ -1055,15 +1060,16 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-[280px] sm:h-[350px] object-cover rounded-tl-[200px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                   onClick={() => router.push("/details/venetian")}
                 />
               </div>
 
               {/* Text + Images below video */}
-              <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-row gap-4 w-full items-stretch">
                 {/* Text Section */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col justify-between">
                   {VenetianBlinds.map((item, index) => {
                     if (item.type === "header") {
                       return (
@@ -1125,13 +1131,13 @@ export default function Home() {
                   </Button>
                 </div>
 
-                {/* Images Section (mobile right side) */}
+                {/* Images Section */}
                 <div
-                  className="flex flex-col gap-4 w-[45%]"
+                  className="flex flex-col gap-4 flex-1"
                   onClick={() => router.push("/details/venetian")}
                 >
                   {venetianBlindsImg.slice(1).map((item, index) => (
-                    <div key={index} className="h-[120px] sm:h-[150px]">
+                    <div key={index} className="flex-1">
                       <img
                         src={item.image}
                         alt={`Venetian ${index + 1}`}
@@ -1264,15 +1270,16 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-[280px] sm:h-[350px] object-cover rounded-tl-[200px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                   onClick={() => router.push("/details/vertical")}
                 />
               </div>
 
               {/* Text + Images below video */}
-              <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-row gap-4 w-full items-stretch">
                 {/* Text Section */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col justify-between">
                   {VerticalBlinds.map((item, index) => {
                     if (item.type === "header") {
                       return (
@@ -1336,11 +1343,11 @@ export default function Home() {
 
                 {/* Images Section (mobile right side) */}
                 <div
-                  className="flex flex-col gap-4 w-[45%]"
+                  className="flex flex-col gap-4 flex-1"
                   onClick={() => router.push("/details/vertical")}
                 >
                   {verticalBlindsImg.slice(1).map((item, index) => (
-                    <div key={index} className="h-[120px] sm:h-[150px]">
+                    <div key={index} className="flex-1">
                       <img
                         src={item.image}
                         alt={`Blind ${index + 1}`}
@@ -1473,15 +1480,16 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-auto object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg"
+                  className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                   onClick={() => router.push("/details/wooden")}
                 />
               </div>
 
               {/* Text + Images side by side */}
-              <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-row gap-4 w-full items-stretch">
                 {/* Text Section (left) */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col justify-between">
                   {WoodenBlinds.map((item, index) => {
                     if (item.type === "header") {
                       return (
@@ -1545,11 +1553,11 @@ export default function Home() {
 
                 {/* Images Section (right side) */}
                 <div
-                  className="flex flex-col gap-4 w-[45%]"
+                  className="flex flex-col gap-4 flex-1"
                   onClick={() => router.push("/details/wooden")}
                 >
                   {woodenBlindsImg.slice(1).map((item, index) => (
-                    <div key={index} className="h-[120px] sm:h-[150px]">
+                    <div key={index} className="flex-1">
                       <img
                         src={item.image}
                         alt={`Blind ${index + 1}`}
@@ -1669,19 +1677,20 @@ export default function Home() {
               data-aos="fade-up"
             >
               {/* Main image on top */}
-              <div className="w-full h-[400px]">
+              <div className="w-full h-[280px]">
                 <img
                   src={accordionBlindsImg[0].image}
                   alt="Accordion Blind"
-                  className="w-full h-full object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg cursor-pointer"
+                  className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                   onClick={() => router.push("/details/accordion")}
                 />
               </div>
 
               {/* Text + stacked images row */}
-              <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-row gap-4 w-full items-stretch">
                 {/* Text Section (left) */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col justify-between">
                   {AccordionFoldingDoors.map((item, index) => {
                     if (item.type === "header") {
                       return (
@@ -1742,11 +1751,11 @@ export default function Home() {
 
                 {/* Images Section (right side) */}
                 <div
-                  className="flex flex-col gap-4 w-[45%]"
+                  className="flex flex-col gap-4 flex-1"
                   onClick={() => router.push("/details/accordion")}
                 >
                   {accordionBlindsImg.slice(1).map((item, index) => (
-                    <div key={index} className="h-[120px] sm:h-[150px]">
+                    <div key={index} className="flex-1">
                       <img
                         src={item.image}
                         alt={`Accordion Blind ${index + 1}`}
@@ -1760,7 +1769,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="bg-gray-200">
         <div className="w-full max-w-[1980px] mx-auto mt-15">
           <div className="flex justify-center items-center my-5">
@@ -1822,7 +1830,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div id="contacts" className="flex flex-col items-center gap-4 mt-8">
         <span
           ref={barRef}

@@ -110,16 +110,16 @@ export const combiBlinds = [
     image: "/koreanMain.mp4",
   },
   {
-    image: "/blinds1.jpg",
+    image: "/combinew1.jpg",
   },
   {
-    image: "/blinds2.jpg",
+    image: "/combinew2.jpg",
   },
   {
-    image: "/blinds3.jpg",
+    image: "/combinew3.jpg",
   },
   {
-    image: "/kombi7.jpg",
+    image: "/combinew4.jpg",
   },
 ];
 export const rollerBlindsImg = [
@@ -212,19 +212,19 @@ export const woodenBlindsImg = [
 ];
 export const accordionBlindsImg = [
   {
-    image: "/accordionnew1.jpg",
+    image: "/accordion7.jpg",
   },
   {
     image: "/accordionnew2.jpg",
   },
   {
-    image: "/accordion9.jpg",
+    image: "/accordion12.jpg",
   },
   {
-    image: "/accordion8.jpg",
+    image: "/accordion13.jpg",
   },
   {
-    image: "/accordion1.jpg",
+    image: "/accordionnew1.jpg",
   },
 ];
 
