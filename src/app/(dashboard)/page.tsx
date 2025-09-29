@@ -1584,10 +1584,14 @@ active:scale-95 md:hover:scale-105"
               >
                 {/* Left main image */}
                 <div className="w-full md:w-auto">
-                  <img
+                  <video
                     src={accordionBlindsImg[0].image}
-                    alt="Accordion Blind"
-                    className="w-full h-auto md:w-[800px] md:h-[700px] object-cover rounded-tl-[350px] rounded-tr-lg rounded-br-lg rounded-bl-lg cursor-pointer"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
+             rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                     onClick={() => router.push("/details/accordion")}
                   />
                 </div>
@@ -1678,9 +1682,12 @@ active:scale-95 md:hover:scale-105"
             >
               {/* Main image on top */}
               <div className="w-full h-[280px]">
-                <img
+                <video
                   src={accordionBlindsImg[0].image}
-                  alt="Accordion Blind"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-[280px] sm:h-[350px] md:w-[800px] md:h-[700px] object-cover 
              rounded-[20px] md:rounded-tl-[350px] md:rounded-tr-lg md:rounded-br-lg md:rounded-bl-lg"
                   onClick={() => router.push("/details/accordion")}

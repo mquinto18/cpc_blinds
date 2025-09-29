@@ -212,7 +212,7 @@ export const woodenBlindsImg = [
 ];
 export const accordionBlindsImg = [
   {
-    image: "/accordion7.jpg",
+    image: "/accordionvid.mp4",
   },
   {
     image: "/accordionnew2.jpg",
