@@ -127,7 +127,7 @@ export const rollerBlindsImg = [
     image: "/rollersMain.mp4",
   },
   {
-    image: "/roller1.jpg",
+    image: "/rollerblindsnew.jpg",
   },
   {
     image: "/roller2.jpeg",
